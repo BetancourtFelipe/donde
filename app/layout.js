@@ -10,23 +10,23 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head />
-
       <body>
         <header className={styles.header}>
           {/* <section>banner</section> */}
           <nav className={styles.nav}>
             <Link href="/">Donde</Link>
             <Link href="/">Profile</Link>
-            <Link href="/">About</Link>
+            <Link href="/about">About</Link>
             <Link className={styles.login} href="/">
               Login
             </Link>
           </nav>
         </header>
+
         {children}
         <footer className={styles.footer}>
-          <div className={styles.footerlink}>
-            <Link href="/">
+          <div>
+            <Link href="/about">
               About
               <Image src={about} />
             </Link>

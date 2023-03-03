@@ -1,0 +1,33 @@
+.header {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  text-decoration: overline;
+  text-transform: uppercase;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 10px;
+  padding: 40px;
+  flex-wrap: wrap;
+
+  .heading {
+    text-decoration: underline;
+    flex-wrap: wrap;
+  }
+}
+
+.about {
+  border-radius: 5px;
+  background-image: linear-gradient(#faf7ff, #aba9bb 90%);
+  width: 610px;
+  height: 440px;
+  text-align: center;
+  color: black;
+  box-shadow: 10px 10px #f1edff;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 10px;
+}

@@ -4,9 +4,9 @@ import coffelanding from '../public/images/coffelanding.jpeg';
 import restaurantlanding from '../public/images/restaurantlanding.jpeg';
 import styles from './page.module.scss';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className={styles.header}>
+    <main>
       {/* <h1 className={styles.mainheading}>DONDE</h1> */}
       <div className={styles.landing}>
         <section className={styles.description}>
