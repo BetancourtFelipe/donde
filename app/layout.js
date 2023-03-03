@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
             <Link href="/">Donde</Link>
             <Link href="/">Profile</Link>
             <Link href="/about">About</Link>
-            <Link className={styles.login} href="/">
+            <Link className={styles.login} href="/login">
               Login
             </Link>
           </nav>
@@ -30,10 +30,10 @@ export default function RootLayout({ children }) {
               About
               <Image src={about} />
             </Link>
-            <Link href="/">
+            <Link href="/login">
               Login <Image src={login} />
             </Link>
-            <Link href="/">
+            <Link href="/register">
               Sing up
               <Image src={singup} />
             </Link>
