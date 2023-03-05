@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
           <nav className={styles.nav}>
             <Link href="/">Donde</Link>
             <Link href="/">Profile</Link>
+            <Link href="/users/admin">Admin</Link>
             <Link href="/about">About</Link>
             <Link className={styles.login} href="/login">
               Login

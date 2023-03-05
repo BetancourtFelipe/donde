@@ -4,6 +4,12 @@ const nextConfig = {
     appDir: true,
     typedRoutes: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;

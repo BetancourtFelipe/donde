@@ -41,6 +41,18 @@ export const getUserByUsernameWithPasswordHash = cache(
   },
 );
 
+// export const getAnimalById = cache(async (id: number) => {
+//   const [animal] = await sql<Animal[]>`
+//     SELECT
+//       *
+//     FROM
+//       animals
+//     WHERE
+//       id = ${id}
+//   `;
+//   return animal;
+// });
+
 export const getUserByUsername = cache(async (username: string) => {
   const [user] = await sql<{ id: number; username: string }[]>`
     SELECT
