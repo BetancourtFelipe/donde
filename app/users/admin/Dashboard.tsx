@@ -1,5 +1,5 @@
 'use client';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { User } from '../../../database/users';
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Dashboard(props: Props) {
-  // const router = useRouter();
+  const router = useRouter();
   const [users, setUsers] = useState<User[]>(props.users);
   const [idOnEditMode, setIdOnEditMode] = useState<number>();
   const [userName, setUserName] = useState<string>('');
@@ -64,19 +64,19 @@ export default function Dashboard(props: Props) {
             return;
           }
           // you should use this
-          // router.refresh();
+          router.refresh();
 
           setUsers([...users, data.user]);
         }}
       >
         Create user
       </button>
-      {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
+      {typeof error === 'string' && <div>{error}</div>}
       <div>
         {users.map((user) => (
           <div key={`user-${user.id}`}>
             {idOnEditMode !== user.id ? (
-              user.userName
+              user.username
             ) : (
               <label>
                 user
@@ -134,7 +134,7 @@ export default function Dashboard(props: Props) {
               <button
                 onClick={() => {
                   setIdOnEditMode(user.id);
-                  setEditUserName(user.userName);
+                  setEditUserName(user.username);
                 }}
               >
                 edit

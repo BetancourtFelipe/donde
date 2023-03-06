@@ -1,9 +1,12 @@
 import { cache } from 'react';
 import { sql } from './connect';
 
-type User = {
+export type User = {
   id: number;
   username: string;
+};
+
+type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
@@ -29,7 +32,7 @@ export const getUserBySessionToken = cache(async (token: string) => {
 
 export const getUserByUsernameWithPasswordHash = cache(
   async (username: string) => {
-    const [user] = await sql<User[]>`
+    const [user] = await sql<UserWithPasswordHash[]>`
     SELECT
       *
     FROM
@@ -40,18 +43,6 @@ export const getUserByUsernameWithPasswordHash = cache(
     return user;
   },
 );
-
-// export const getAnimalById = cache(async (id: number) => {
-//   const [animal] = await sql<Animal[]>`
-//     SELECT
-//       *
-//     FROM
-//       animals
-//     WHERE
-//       id = ${id}
-//   `;
-//   return animal;
-// });
 
 export const getUserByUsername = cache(async (username: string) => {
   const [user] = await sql<{ id: number; username: string }[]>`
@@ -80,3 +71,11 @@ export const createUser = cache(
     return user;
   },
 );
+
+export const getUsers = cache(async () => {
+  const users = await sql<User[]>`
+    SELECT * FROM users
+  `;
+
+  return users;
+});
