@@ -9,6 +9,7 @@ import { createCsrfSecret } from '../../../../utils/csrf';
 
 const userSchema = z.object({
   username: z.string(),
+  email: z.string(),
   password: z.string(),
 });
 

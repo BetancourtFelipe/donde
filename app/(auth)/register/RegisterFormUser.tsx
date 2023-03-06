@@ -5,8 +5,11 @@ import { useState } from 'react';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
 
-export default function RegisterForm(props: { returnTo?: string | string[] }) {
+export default function RegisterFormUser(props: {
+  returnTo?: string | string[];
+}) {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
@@ -18,7 +21,11 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
 
         const response = await fetch('/api/register', {
           method: 'POST',
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify({
+            username,
+            email,
+            password,
+          }),
         });
 
         const data: RegisterResponseBodyPost = await response.json();
@@ -49,6 +56,15 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           onChange={(event) => setUsername(event.currentTarget.value)}
         />
       </label>
+      <br />
+      <label>
+        email:
+        <input
+          value={email}
+          onChange={(event) => setEmail(event.currentTarget.value)}
+        />
+      </label>
+      <br />
       <label>
         password:
         <input
@@ -56,6 +72,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           onChange={(event) => setPassword(event.currentTarget.value)}
         />
       </label>
+      <br />
       <button>Register</button>
     </form>
   );
