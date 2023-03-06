@@ -24,7 +24,7 @@ export default async function RootLayout({ children }) {
           {/* <section>banner</section> */}
           <nav className={styles.nav}>
             <Link href="/">Donde</Link>
-            <Link href="/profile/[username] ">Profile</Link>
+            <Link href="/profile/username">Profile</Link>
             <Link href="/users/admin">Admin</Link>
             <Link href="/about">About</Link>
             <div>

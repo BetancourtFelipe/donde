@@ -12,10 +12,10 @@ export default function Dashboard(props: Props) {
   const router = useRouter();
   const [users, setUsers] = useState<User[]>(props.users);
   const [idOnEditMode, setIdOnEditMode] = useState<number>();
-  const [userName, setUserName] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   // const [type, setType] = useState<string>('');
   // const [accessory, setAccessory] = useState<string>('');
-  const [editUserName, setEditUserName] = useState<string>('');
+  const [editUsername, setEditUsername] = useState<string>('');
   // const [editType, setEditType] = useState<string>('');
   // const [editAccessory, setEditAccessory] = useState<string>('');
   const [error, setError] = useState<string>();
@@ -25,8 +25,8 @@ export default function Dashboard(props: Props) {
       <label>
         User Name:
         <input
-          value={userName}
-          onChange={(event) => setUserName(event.currentTarget.value)}
+          value={username}
+          onChange={(event) => setUsername(event.currentTarget.value)}
         />
       </label>
       {/* <label>
@@ -51,7 +51,7 @@ export default function Dashboard(props: Props) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              userName,
+              username,
 
               csrfToken: props.csrfToken,
             }),
@@ -81,9 +81,9 @@ export default function Dashboard(props: Props) {
               <label>
                 user
                 <input
-                  value={editUserName}
+                  value={editUsername}
                   onChange={(event) =>
-                    setEditUserName(event.currentTarget.value)
+                    setEditUsername(event.currentTarget.value)
                   }
                 />
               </label>
@@ -134,7 +134,7 @@ export default function Dashboard(props: Props) {
               <button
                 onClick={() => {
                   setIdOnEditMode(user.id);
-                  setEditUserName(user.username);
+                  setEditUsername(user.username);
                 }}
               >
                 edit
@@ -148,7 +148,7 @@ export default function Dashboard(props: Props) {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                      userName: editUserName,
+                      userName: editUsername,
                     }),
                   });
 
