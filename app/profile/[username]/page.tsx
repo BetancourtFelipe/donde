@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getUserByUsername } from '../../../database/users';
+import LocationForm from './LocationForm';
 
 type Props = { params: { username: string } };
 
@@ -14,6 +15,7 @@ export default async function UserProfile({ params }: Props) {
     <>
       <h1>{user.username}</h1>
       <p>id: {user.id}</p>
+      <LocationForm />
     </>
   );
 }

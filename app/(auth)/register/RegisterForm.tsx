@@ -5,10 +5,10 @@ import { useState } from 'react';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
 
-export default function RegisterFormUser(props: {
-  returnTo?: string | string[];
-}) {
+export default function RegisterForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
@@ -23,6 +23,8 @@ export default function RegisterFormUser(props: {
           method: 'POST',
           body: JSON.stringify({
             username,
+            firstName,
+            lastName,
             email,
             password,
           }),
@@ -54,6 +56,22 @@ export default function RegisterFormUser(props: {
         <input
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
+        />
+      </label>
+      <br />
+      <label>
+        first name:
+        <input
+          value={firstName}
+          onChange={(event) => setFirstName(event.currentTarget.value)}
+        />
+      </label>
+      <br />
+      <label>
+        last name:
+        <input
+          value={lastName}
+          onChange={(event) => setLastName(event.currentTarget.value)}
         />
       </label>
       <br />

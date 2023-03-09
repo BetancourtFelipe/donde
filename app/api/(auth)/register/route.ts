@@ -9,13 +9,22 @@ import { createCsrfSecret } from '../../../../utils/csrf';
 
 const userSchema = z.object({
   username: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
   email: z.string(),
   password: z.string(),
 });
 
 export type RegisterResponseBodyPost =
   | { errors: { message: string }[] }
-  | { user: { username: string } };
+  | {
+      user: {
+        username: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+      };
+    };
 
 export async function POST(
   request: NextRequest,
@@ -61,7 +70,13 @@ export async function POST(
   const passwordHash = await bcrypt.hash(result.data.password, 12);
 
   // 4. create the user
-  const newUser = await createUser(result.data.username, passwordHash);
+  const newUser = await createUser(
+    result.data.username,
+    result.data.firstName,
+    result.data.lastName,
+    result.data.email,
+    passwordHash,
+  );
 
   if (!newUser) {
     return NextResponse.json(
@@ -92,7 +107,14 @@ export async function POST(
 
   // 6. return the new username
   return NextResponse.json(
-    { user: { username: newUser.username } },
+    {
+      user: {
+        username: newUser.username,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+      },
+    },
     {
       status: 200,
       // - Attach the new cookie serialized to the header of the response

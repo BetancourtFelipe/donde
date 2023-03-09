@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
+import styles from './loginform.module.scss';
 
 export default function LoginForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
@@ -42,21 +43,25 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
       {errors.map((error) => (
         <div key={`error-${error.message}`}>Error: {error.message}</div>
       ))}
-      <label>
-        username:
-        <input
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button>Login</button>
+      <div>
+        <div className={styles.login}>
+          <label className={styles.form}>
+            username:
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.currentTarget.value)}
+            />
+          </label>
+          <label className={styles.form}>
+            password:
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </label>
+          <button>Login</button>
+        </div>
+      </div>
     </form>
   );
 }
