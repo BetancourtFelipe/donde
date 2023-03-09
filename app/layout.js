@@ -23,9 +23,9 @@ export default async function RootLayout({ children }) {
         <header className={styles.header}>
           {/* <section>banner</section> */}
           <nav className={styles.nav}>
-            <Link href="/">Donde</Link>
-            <Link href="/users/admin">Admin</Link>
+            <Link href="/">Home</Link>
             <Link href="/about">About</Link>
+            <Link href="/users/admin">Donde</Link>
             <div>
               {user ? (
                 <>
