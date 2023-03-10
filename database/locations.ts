@@ -192,8 +192,8 @@ export async function getLocationByToken(token: string) {
   if (!token) return undefined;
   const location = await sql<LocationWithSpecializations[]>`
     SELECT
-     locations.id AS school_id,
-     locations.name AS school_name,
+     locations.id AS location_id,
+     locations.name AS location_name,
      locations.postal_code,
      locations.street,
      locations.website,
