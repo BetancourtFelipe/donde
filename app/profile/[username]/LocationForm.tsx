@@ -1,22 +1,15 @@
 'use client';
-
-import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Select from 'react-select';
+// import Select from 'react-select';
 // import {
 //   getAllSpecializations,
 //   Specialization,
 // } from '../../../database/specializations';
-import { getUserBySessionToken, getUsers } from '../../../database/users';
-import { transformDataForSelect } from '../../../utils/dataStructure';
-
-// import { getSafeReturnToPath } from '../../../utils/validation';
-
-// type Props = {
-//   location: string;
-//   specializations: string[];
-// };
+// import { getUserBySessionToken, getUsers } from '../../../database/users';
+// import { transformDataForSelect } from '../../../utils/dataStructure';
+import { getSafeReturnToPath } from '../../../utils/validation';
+import { LocationResponseBodyPost } from '../../api/(auth)/location/route';
 
 export default function LocationForm(props: { returnTo?: string | string[] }) {
   const [name, setName] = useState('');
@@ -77,37 +70,36 @@ export default function LocationForm(props: { returnTo?: string | string[] }) {
 
   return (
     <form
-    // onSubmit={async (event) => {
-    //   event.preventDefault();
+      onSubmit={async (event) => {
+        event.preventDefault();
 
-    //   // const response = await fetch('/api/locations', {
-    //   //   method: 'POST',
-    //   //   body: JSON.stringify({
-    //   //     name,
-    //   //     postalCode,
-    //   //     street,
-    //   //     website,
-    //   //     specializations,
-    //   //   }),
-    //   // });
+        const response = await fetch('/api/locations', {
+          method: 'POST',
+          body: JSON.stringify({
+            name,
+            postalCode,
+            street,
+            website,
+          }),
+        });
 
-    //   // const data: LocationResponseBody = await response.json();
+        const data: LocationResponseBodyPost = await response.json();
 
-    //   // if ('errors' in data) {
-    //   //   setErrors(data.errors);
-    //   //   return;
-    //   // }
+        if ('errors' in data) {
+          setErrors(data.errors);
+          return;
+        }
 
-    //   // const returnTo = getSafeReturnToPath(props.returnTo);
+        const returnTo = getSafeReturnToPath(props.returnTo);
 
-    //   // if (returnTo) {
-    //   //   router.push(returnTo);
-    //   //   return;
-    //   // }
+        if (returnTo) {
+          router.push(returnTo);
+          return;
+        }
 
-    //   // router.replace(`/profile/${data.user.username}`);
-    //   // router.refresh();
-    // }}
+        // router.replace(`/profile/${data.location.name}`);
+        // router.refresh();
+      }}
     >
       {errors.map((error) => (
         <div key={`error-${error.message}`}>Error: {error.message}</div>
@@ -149,22 +141,22 @@ export default function LocationForm(props: { returnTo?: string | string[] }) {
         </label>
         <br />
         <div>
-          <Select
-          // onChange={(selectedOption) =>
-          //   handleSpecializationSelect(selectedOption as Specialization[])
-          // }
-          // isMulti
-          // options={
-          //   selectedSpecializations?.length === maxSelectOptions
-          //     ? []
-          //     : props.specializations
-          // }
-          // noOptionsMessage={() => {
-          //   return selectedSpecializations?.length === maxSelectOptions
-          //     ? 'You cannot choose more than 5 specializations'
-          //     : 'No options available';
-          // }}
-          />
+          {/* <Select
+            onChange={(selectedOption) =>
+              handleSpecializationSelect(selectedOption as Specialization[])
+            }
+            isMulti
+            options={
+              selectedSpecializations?.length === maxSelectOptions
+                ? []
+                : props.specializations
+            }
+            noOptionsMessage={() => {
+              return selectedSpecializations?.length === maxSelectOptions
+                ? 'You cannot choose more than 5 specializations'
+                : 'No options available';
+            }}
+          /> */}
         </div>
         <button>Add Location</button>
       </div>

@@ -160,7 +160,7 @@ export default function Dashboard(props: Props) {
                   }
                   setIdOnEditMode(undefined);
 
-                  // router.refresh();
+                  router.refresh();
                   setUsers(
                     users.map((userOnState) => {
                       return userOnState.id !== data.user.id
