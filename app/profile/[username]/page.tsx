@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getUserByUsername } from '../../../database/users';
-import LocationForm from './LocationForm';
+import AddLocation from './AddLocation';
 import styles from './page.module.scss';
 
 type Props = {
@@ -25,7 +25,7 @@ export default async function UserProfile({ params }: Props) {
       </div>
 
       <div className={styles.createLocation}>
-        <LocationForm />
+        <AddLocation />
       </div>
     </main>
   );
