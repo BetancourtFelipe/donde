@@ -1,11 +1,16 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+// import Select from 'react-select';
+// import {
+//   getAllSpecializations,
+//   Specialization,
+// } from '../../../database/specializations';
+import { transformDataForSelect } from '../../../utils/dataStructure';
 import { getSafeReturnToPath } from '../../../utils/validation';
-import { LocationResponseBodyPost } from '../../api/(auth)/location/route';
+import { LocationResponseBodyPost } from '../../api/(auth)/locations/route';
 
-export default function LocationForm(props: { returnTo?: string | string[] }) {
+export default function AddLocation(props: { returnTo?: string | string[] }) {
   const [name, setName] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [street, setStreet] = useState('');
@@ -14,6 +19,11 @@ export default function LocationForm(props: { returnTo?: string | string[] }) {
   const [website, setWebsite] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
+
+  const maxSelectOptions = 5;
+  const handleSpecializationSelect = (selectedOption: Specialization[]) => {
+    setSelectedSpecializations(selectedOption);
+  };
   return (
     <form
       onSubmit={async (event) => {
@@ -81,6 +91,28 @@ export default function LocationForm(props: { returnTo?: string | string[] }) {
           onChange={(event) => setWebsite(event.currentTarget.value)}
         />
       </label>
+      {/* <br />
+      <label htmlFor="specialization">Choose up to 5 specializations</label>
+      <div>
+        <Select
+          onChange={(selectedOption) =>
+            handleSpecializationSelect(selectedOption as Specialization[])
+          }
+          isMulti
+          options={
+            selectedSpecializations?.length === maxSelectOptions
+              ? []
+              : props.specializations
+          }
+          noOptionsMessage={() => {
+            return selectedSpecializations?.length === maxSelectOptions
+              ? 'You cannot choose more than 5 specializations'
+              : 'No options available';
+          }}
+          value={selectedSpecializations}
+          placeholder="Select specializations"
+        />
+      </div> */}
       <br />
       <button>Add Location</button>
     </form>
