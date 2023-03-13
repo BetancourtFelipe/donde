@@ -6,7 +6,7 @@ import { useState } from 'react';
 //   getAllSpecializations,
 //   Specialization,
 // } from '../../../database/specializations';
-import { transformDataForSelect } from '../../../utils/dataStructure';
+// import { transformDataForSelect } from '../../../utils/dataStructure';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { LocationResponseBodyPost } from '../../api/(auth)/locations/route';
 
@@ -20,10 +20,10 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
-  const maxSelectOptions = 5;
-  const handleSpecializationSelect = (selectedOption: Specialization[]) => {
-    setSelectedSpecializations(selectedOption);
-  };
+  // const maxSelectOptions = 5;
+  // const handleSpecializationSelect = (selectedOption: Specialization[]) => {
+  //   setSelectedSpecializations(selectedOption);
+  // };
   return (
     <form
       onSubmit={async (event) => {
