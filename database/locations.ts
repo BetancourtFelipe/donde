@@ -120,24 +120,34 @@ export async function getLocationWithSpecializationsById(locationId: number) {
   return locationWithSpecializations;
 }
 
+// export async function getAllLocations() {
+//   const locations = await sql<LocationWithSpecializations[]>`
+//     SELECT
+//      locations.id AS location_id,
+//      locations.name AS location_name,
+//      locations.postal_code,
+//      locations.street,
+//      locations.website,
+//      specializations.id as specialization_id,
+//      specializations.name as specialization_name
+//     FROM
+//      locations,
+//      specializations,
+//      locations_specializations
+//     WHERE
+//      specializations.id = locations_specializations.specialization_id AND
+//      locations.id = locations_specializations.location_id
+//   `;
+//   return locations;
+// }
+
 export async function getAllLocations() {
   const locations = await sql<LocationWithSpecializations[]>`
     SELECT
-     locations.id AS location_id,
-     locations.name AS location_name,
-     locations.postal_code,
-     locations.street,
-     locations.website,
-     specializations.id as specialization_id,
-     specializations.name as specialization_name
+    *
     FROM
-     locations,
-     specializations,
-     locations_specializations
-    WHERE
-     specializations.id = locations_specializations.specialization_id AND
-     locations.id = locations_specializations.location_id
-  `;
+    locations
+    `;
   return locations;
 }
 

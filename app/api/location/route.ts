@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createLocation } from '../../../database/locations';
-import { createSession } from '../../../database/sessions';
-import { createSerializedRegisterSessionTokenCookie } from '../../../utils/cookies';
-import { createCsrfSecret } from '../../../utils/csrf';
 
 const locationSchema = z.object({
   name: z.string(),
@@ -43,11 +40,7 @@ export async function POST(
     });
   }
 
-  console.log('data', result.data);
-
   const { name, postalCode, street, website, userId } = result.data;
-
-  console.log(name);
 
   if (!name || !postalCode || !street) {
     return new NextResponse(

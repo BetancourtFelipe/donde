@@ -7,7 +7,6 @@ import styles from './page.module.scss';
 type Props = {
   params: {
     username: string;
-    email: string;
   };
 };
 
@@ -27,7 +26,6 @@ export default async function UserProfile({ params }: Props) {
         <h1>{user.username}</h1>
         <p>id: {user.id}</p>
       </div>
-
       <div className={styles.createLocation}>
         <AddLocation user={user} />
       </div>

@@ -1,0 +1,16 @@
+.locationCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.locationCardDetails {
+  border-radius: 5px;
+  background-image: linear-gradient(#faf7ff, #aba9bb 90%);
+  color: black;
+  box-shadow: 5px 5px #f1edff;
+  text-transform: uppercase;
+  width: 300px;
+}
