@@ -1,10 +1,9 @@
-import crypto from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createLocation } from '../../../../database/locations';
-import { createSession } from '../../../../database/sessions';
-import { createSerializedRegisterSessionTokenCookie } from '../../../../utils/cookies';
-import { createCsrfSecret } from '../../../../utils/csrf';
+import { createLocation } from '../../../database/locations';
+import { createSession } from '../../../database/sessions';
+import { createSerializedRegisterSessionTokenCookie } from '../../../utils/cookies';
+import { createCsrfSecret } from '../../../utils/csrf';
 
 const locationSchema = z.object({
   name: z.string(),
@@ -12,7 +11,7 @@ const locationSchema = z.object({
   street: z.string(),
   website: z.string(),
   userId: z.number(),
-  specializationIds: z.number(),
+  // specializationIds: z.number(),
 });
 
 export type LocationResponseBodyPost =
@@ -24,15 +23,19 @@ export type LocationResponseBodyPost =
         street: string;
         website: string;
         userId: number;
-        specializationIds: number[];
+        // specializationIds: number[];
       };
     };
 
 export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<LocationResponseBodyPost>> {
+  const body = await request.json();
   // Parse the request body using the schema defined above.
-  const result = locationSchema.safeParse(request.body);
+  console.log('body', body);
+  const result = locationSchema.safeParse(body);
+
+  console.log('result', result);
 
   if (!result.success) {
     return new NextResponse(JSON.stringify({ errors: result.error.issues }), {
@@ -40,8 +43,11 @@ export async function POST(
     });
   }
 
-  const { name, postalCode, street, website, userId, specializationIds } =
-    result.data;
+  console.log('data', result.data);
+
+  const { name, postalCode, street, website, userId } = result.data;
+
+  console.log(name);
 
   if (!name || !postalCode || !street) {
     return new NextResponse(
@@ -57,8 +63,10 @@ export async function POST(
     street,
     website,
     userId,
-    [specializationIds],
+    // [specializationIds],
   );
+
+  console.log('newLocation', newLocation);
 
   if (!newLocation) {
     return new NextResponse(
@@ -66,22 +74,6 @@ export async function POST(
       { status: 500 },
     );
   }
-
-  const token = crypto.randomBytes(80).toString('base64');
-  const csrfSecret = createCsrfSecret();
-
-  const session = await createSession(token, newLocation.id, csrfSecret);
-
-  if (!session) {
-    return new NextResponse(
-      JSON.stringify({ errors: [{ message: 'session creation failed' }] }),
-      { status: 500 },
-    );
-  }
-
-  const serializedCookie = createSerializedRegisterSessionTokenCookie(
-    session.token,
-  );
 
   return new NextResponse(
     JSON.stringify({
@@ -91,14 +83,8 @@ export async function POST(
         street: newLocation.street,
         website: newLocation.website,
         userId: newLocation.userId,
-        specializationIds: newLocation.specializations,
+        // specializationIds: newLocation.specializations,
       },
     }),
-    {
-      status: 200,
-      headers: {
-        'Set-Cookie': serializedCookie,
-      },
-    },
   );
 }

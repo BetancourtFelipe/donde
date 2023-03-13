@@ -8,7 +8,7 @@ import { useState } from 'react';
 // } from '../../../database/specializations';
 // import { transformDataForSelect } from '../../../utils/dataStructure';
 import { getSafeReturnToPath } from '../../../utils/validation';
-import { LocationResponseBodyPost } from '../../api/(auth)/locations/route';
+import { LocationResponseBodyPost } from '../../api/location/route';
 
 export default function AddLocation(props: { returnTo?: string | string[] }) {
   const [name, setName] = useState('');
@@ -19,6 +19,9 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
   const [website, setWebsite] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
+  const userId = props.user.id;
+
+  console.log(userId);
 
   // const maxSelectOptions = 5;
   // const handleSpecializationSelect = (selectedOption: Specialization[]) => {
@@ -29,13 +32,14 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
       onSubmit={async (event) => {
         event.preventDefault();
 
-        const response = await fetch('/api/locations', {
+        const response = await fetch('/api/location', {
           method: 'POST',
           body: JSON.stringify({
             name,
             postalCode,
             street,
             website,
+            userId,
           }),
         });
 
@@ -53,8 +57,7 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
           return;
         }
 
-        // router.replace(`/profile/${data.user.username}`);
-        // router.refresh();
+        router.refresh();
       }}
     >
       {errors.map((error) => (

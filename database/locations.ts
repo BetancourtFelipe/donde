@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { sql } from './connect';
 import { Specialization } from './specializations';
 
@@ -36,7 +37,6 @@ export async function createLocation(
   street: string,
   website: string,
   userId: number,
-  specializationIds: number[],
 ) {
   const [location] = await sql<Location[]>`
     INSERT INTO locations
@@ -52,36 +52,38 @@ export async function createLocation(
     RETURNING *
   `;
 
-  // Insert specializations
-  for (const specializationId of specializationIds) {
-    await sql`INSERT INTO locations_specializations
-     (location_id, specialization_id)
-    VALUES
-     (${location!.id}, ${specializationId})`;
-  }
-
-  // Joint query to retrieve the matching specializations
-  const specializations = await sql<Specialization[]>`
-  SELECT
-    specializations.id,
-    specializations.name
-  FROM
-    locations,
-    specializations,
-    locations_specializations
-  WHERE
-    ${location!.id} = locations_specializations.location_id AND
-    specializations.id = locations_specializations.specialization_id AND
-    ${location!.id} = locations.id
-  `;
-
-  // Returning location including matching specializations
-  const locationWithSpecializations = {
-    ...location!,
-    specializations: [...specializations],
-  };
-  return locationWithSpecializations;
+  return location;
 }
+// Insert specializations
+// for (const specializationId of specializationIds) {
+//   await sql`INSERT INTO locations_specializations
+//    (location_id, specialization_id)
+//   VALUES
+//    (${location!.id}, ${specializationId})`;
+// }
+
+// // Joint query to retrieve the matching specializations
+// const specializations = await sql<Specialization[]>`
+// SELECT
+//   specializations.id,
+//   specializations.name
+// FROM
+//   locations,
+//   specializations,
+//   locations_specializations
+// WHERE
+//   ${location!.id} = locations_specializations.location_id AND
+//   specializations.id = locations_specializations.specialization_id AND
+//   ${location!.id} = locations.id
+// `;
+
+// // Returning location including matching specializations
+// const locationWithSpecializations = {
+//   ...location!,
+//   specializations: [...specializations],
+// };
+// return locationWithSpecializations;
+// }
 
 export async function getLocationById(id: number) {
   const [location] = await sql<Location[]>`
@@ -161,32 +163,44 @@ export async function getAllLocationsWithLimit(limit: number) {
   return locations;
 }
 
-// Get location by user ID
-export async function getLocationByUserId(userId: number, token: string) {
-  if (!token) return undefined;
-  const location = await sql<LocationWithSpecializations[]>`
+export const getLocationByUserId = cache(async (userId: string) => {
+  const [location] = await sql<{}[]>`
     SELECT
-     locations.id AS location_id,
-     locations.name AS location_name,
-     locations.postal_code,
-     locations.street,
-     locations.website,
-     locations.is_public,
-     specializations.id as specialization_id,
-     specializations.name as specialization_name
+      *
     FROM
-     users,
-     locations,
-     specializations,
-     locations_specializations
+      locations
     WHERE
-     users.id = ${userId} AND
-     locations.user_id = ${userId} AND
-     specializations.id = locations_specializations.specialization_id AND
-     locations.id = locations_specializations.location_id
+      user_id = ${userId}
   `;
   return location;
-}
+});
+
+// // Get location by user ID
+// export async function getLocationByUserId(userId: number, token: string) {
+//   if (!token) return undefined;
+//   const location = await sql<LocationWithSpecializations[]>`
+//     SELECT
+//      locations.id AS location_id,
+//      locations.name AS location_name,
+//      locations.postal_code,
+//      locations.street,
+//      locations.website,
+//      locations.is_public,
+//      specializations.id as specialization_id,
+//      specializations.name as specialization_name
+//     FROM
+//      users,
+//      locations,
+//      specializations,
+//      locations_specializations
+//     WHERE
+//      users.id = ${userId} AND
+//      locations.user_id = ${userId} AND
+//      specializations.id = locations_specializations.specialization_id AND
+//      locations.id = locations_specializations.location_id
+//   `;
+//   return location;
+// }
 
 export async function getLocationByToken(token: string) {
   if (!token) return undefined;

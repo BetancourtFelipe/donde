@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { getLocationByUserId } from '../../../database/locations';
 import { getUserByUsername } from '../../../database/users';
 import AddLocation from './AddLocation';
 import styles from './page.module.scss';
@@ -17,6 +18,9 @@ export default async function UserProfile({ params }: Props) {
     notFound();
   }
 
+  const locations = await getLocationByUserId(user.id);
+  console.log(locations);
+
   return (
     <main className={styles.main}>
       <div className={styles.profile}>
@@ -25,7 +29,7 @@ export default async function UserProfile({ params }: Props) {
       </div>
 
       <div className={styles.createLocation}>
-        <AddLocation />
+        <AddLocation user={user} />
       </div>
     </main>
   );
