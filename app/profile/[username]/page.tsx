@@ -18,7 +18,6 @@ export default async function UserProfile({ params }: Props) {
   }
 
   const locations = await getLocationByUserId(user.id);
-  console.log(locations);
 
   return (
     <main className={styles.main}>

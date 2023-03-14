@@ -7,7 +7,6 @@ import styles from './page.module.scss';
 export default function HomePage() {
   return (
     <main>
-      {/* <h1 className={styles.mainheading}>DONDE</h1> */}
       <div className={styles.landing}>
         <section className={styles.description}>
           <h3>Description Donde</h3>

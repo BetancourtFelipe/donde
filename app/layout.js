@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getUserBySessionToken } from '../database/users';
 import about from '../public/about.png';
 import login from '../public/login.png';
+import logo from '../public/logo.png';
 import singup from '../public/singup.png';
 import styles from './layout.module.scss';
 
@@ -24,8 +25,9 @@ export default async function RootLayout({ children }) {
           {/* <section>banner</section> */}
           <nav className={styles.nav}>
             <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
             <Link href="/locations">Locations</Link>
+            <Image className={styles.image} src={logo} />
+            <Link href="/about">About</Link>
             <div>
               {user ? (
                 <>
