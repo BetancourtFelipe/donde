@@ -1,18 +1,18 @@
 import { notFound } from 'next/navigation';
 import { getLocationById } from '../../../database/locations';
 
-type Props = {
-  location: {
-    locationId: number;
-    name: string;
-    postalCode: string;
-    street: string;
-    website: string;
-  };
+type Params = {
+  locationId: string;
+  name: string;
+  postalCode: string;
+  street: string;
+  website: string;
+  userId: number;
 };
 
-export default function SingleLocationPage(props: Props) {
-  const singleLocation = getLocationById(parseInt(props.location));
+export default function SingleLocationPage(params: Params) {
+  const singleLocation = getLocationById(parseInt(params.locationId));
+  console.log(singleLocation);
 
   if (!singleLocation) {
     notFound();

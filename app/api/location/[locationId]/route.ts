@@ -9,7 +9,6 @@ const locationSchema = z.object({
   street: z.string(),
   website: z.string(),
   userId: z.number(),
-  // specializationIds: z.number(),
 });
 
 export type LocationResponseBodyGet =
@@ -17,16 +16,23 @@ export type LocationResponseBodyGet =
       error: string;
     }
   | {
-      locationId: Location;
+      location: {
+        id: number;
+        name: string;
+        postalCode: string;
+        street: string;
+        website: string;
+        userId: number;
+      };
     };
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Record<string, string | string[]> },
+  { params }: { params: { locationId: number } },
 ): Promise<NextResponse<LocationResponseBodyGet>> {
   const locationId = Number(params.locationId);
 
-  if (!locationId) {
+  if (Number(locationId)) {
     return NextResponse.json(
       {
         error: 'Location id is not valid',
