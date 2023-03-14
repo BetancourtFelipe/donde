@@ -92,7 +92,7 @@ export const getLocationById = cache(async (id: number) => {
     FROM
       locations
     WHERE
-      locationId = ${id}
+      id = ${id}
   `;
   return location;
 });
