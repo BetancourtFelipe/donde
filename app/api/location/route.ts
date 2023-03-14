@@ -29,10 +29,8 @@ export async function POST(
 ): Promise<NextResponse<LocationResponseBodyPost>> {
   const body = await request.json();
   // Parse the request body using the schema defined above.
-  console.log('body', body);
-  const result = locationSchema.safeParse(body);
 
-  console.log('result', result);
+  const result = locationSchema.safeParse(body);
 
   if (!result.success) {
     return new NextResponse(JSON.stringify({ errors: result.error.issues }), {
@@ -58,8 +56,6 @@ export async function POST(
     userId,
     // [specializationIds],
   );
-
-  console.log('newLocation', newLocation);
 
   if (!newLocation) {
     return new NextResponse(

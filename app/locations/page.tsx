@@ -1,17 +1,8 @@
 import Link from 'next/link';
-// import { cookies } from 'next/headers';
 import { getAllLocations } from '../../database/locations';
 import styles from './page.module.scss';
 
-// import { getValidSessionByToken } from '../../database/sessions';
-
 export default async function LocationsPage() {
-  // const sessionTokenCookie = cookies().get('sessionToken');
-
-  // const session =
-  //   sessionTokenCookie &&
-  //   (await getValidSessionByToken(sessionTokenCookie.value));
-
   const locations = await getAllLocations();
 
   return (

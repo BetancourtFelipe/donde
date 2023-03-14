@@ -59,7 +59,7 @@ export async function createLocation(
 //   await sql`INSERT INTO locations_specializations
 //    (location_id, specialization_id)
 //   VALUES
-//    (${location!.id}, ${specializationId})`;
+//   --  (${location!.id}, ${specializationId})`;
 // }
 
 // // Joint query to retrieve the matching specializations
@@ -85,17 +85,17 @@ export async function createLocation(
 // return locationWithSpecializations;
 // }
 
-export async function getLocationById(id: number) {
+export const getLocationById = cache(async (id: number) => {
   const [location] = await sql<Location[]>`
     SELECT
       *
     FROM
       locations
     WHERE
-      id = ${id}
+      locationId = ${id}
   `;
   return location;
-}
+});
 
 export async function getLocationWithSpecializationsById(locationId: number) {
   const locationWithSpecializations = await sql<LocationWithSpecializations[]>`
@@ -174,7 +174,7 @@ export async function getAllLocationsWithLimit(limit: number) {
 }
 
 export const getLocationByUserId = cache(async (userId: string) => {
-  const [location] = await sql<{}[]>`
+  const [location] = await sql<Location[]>`
     SELECT
       *
     FROM
