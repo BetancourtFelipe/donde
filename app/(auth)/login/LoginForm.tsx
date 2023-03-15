@@ -6,7 +6,7 @@ import { getSafeReturnToPath } from '../../../utils/validation';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
 import styles from './loginform.module.scss';
 
-export default function LoginForm(props: { returnTo?: string | string[] }) {
+export default function LoginForm(props: { returnTo: string | string[] }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);

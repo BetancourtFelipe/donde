@@ -1,32 +1,28 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-// import Select from 'react-select';
-// import {
-//   getAllSpecializations,
-//   Specialization,
-// } from '../../../database/specializations';
-// import { transformDataForSelect } from '../../../utils/dataStructure';
+import Select from 'react-select';
+import { Specialization } from '../../../database/specializations';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { LocationResponseBodyPost } from '../../api/location/route';
 
-export default function AddLocation(props: { returnTo?: string | string[] }) {
+export default function AddLocation(props: { returnTo: string | string[] }) {
   const [name, setName] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [street, setStreet] = useState('');
-  // const [selectedSpecializations, setSelectedSpecializations] =
-  //   useState<Specialization[]>();
+  const [selectedSpecializations, setSelectedSpecializations] =
+    useState<Specialization[]>();
   const [website, setWebsite] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
   const userId = props.user.id;
 
-  console.log(userId);
+  console.log(props);
 
-  // const maxSelectOptions = 5;
-  // const handleSpecializationSelect = (selectedOption: Specialization[]) => {
-  //   setSelectedSpecializations(selectedOption);
-  // };
+  const maxSelectOptions = 5;
+  const handleSpecializationSelect = (selectedOption: Specialization[]) => {
+    setSelectedSpecializations(selectedOption);
+  };
   return (
     <form
       onSubmit={async (event) => {
@@ -94,7 +90,7 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
           onChange={(event) => setWebsite(event.currentTarget.value)}
         />
       </label>
-      {/* <br />
+      <br />
       <label htmlFor="specialization">Choose up to 5 specializations</label>
       <div>
         <Select
@@ -115,7 +111,7 @@ export default function AddLocation(props: { returnTo?: string | string[] }) {
           value={selectedSpecializations}
           placeholder="Select specializations"
         />
-      </div> */}
+      </div>
       <br />
       <button>Add Location</button>
     </form>

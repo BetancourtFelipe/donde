@@ -6,7 +6,7 @@ import RegisterFormUser from './RegisterForm';
 
 // import RegisterForm from './RegisterFormUser';
 
-type Props = { searchParams: { returnTo?: string | string[] } };
+type Props = { searchParams: { returnTo: string | string[] } };
 
 export default async function RegisterPage(props: Props) {
   // check if i have a valid session
@@ -26,7 +26,7 @@ export default async function RegisterPage(props: Props) {
       <h1>register</h1>
       <div className={styles.register}>
         <div className={styles.form}>
-          <h2>guest</h2>
+          <h2>sing up</h2>
           <RegisterFormUser returnTo={props.searchParams.returnTo} />
         </div>
       </div>

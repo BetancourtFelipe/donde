@@ -8,6 +8,7 @@ type Props = {
     postalCode: string;
     street: string;
     website: string;
+    specializationIds: number[];
   };
 };
 
@@ -20,8 +21,6 @@ export default async function SingleLocationPage(props: Props) {
     notFound();
   }
 
-  console.log('singleLocation', singleLocation);
-
   return (
     <>
       <h1>Location Profile{locationId}</h1>
@@ -31,6 +30,12 @@ export default async function SingleLocationPage(props: Props) {
           <p>postal code:{singleLocation.postalCode}</p>
           <p>street:{singleLocation.street}</p>
           <p>website:{singleLocation.website}</p>
+          <div>
+            <p>
+              specializations:
+              <ul>{/* <li>{singleLocation.specializationsId}</li> */}</ul>
+            </p>
+          </div>
         </div>
       </main>
     </>

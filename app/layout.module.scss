@@ -1,10 +1,10 @@
 .header {
   .image {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     margin: 20px;
     padding: 20px;
-    border-radius: 100px 100px;
+    border-radius: 80px 80px;
   }
   .nav {
     background: linear-gradient(to right, #6d7cff, #bcb8f0 60%);
@@ -20,8 +20,8 @@
     font-size: 1em;
 
     a:hover {
-      color: black;
-      background-color: #f1edff;
+      color: white;
+      background-color: black;
       border-radius: 5px;
     }
     a,

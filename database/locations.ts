@@ -22,8 +22,8 @@ export type LocationWithSpecializations = {
 };
 
 export type LocationWithSpecializationsAndUserId = {
-  locationId: number;
-  locationName: string;
+  id: number;
+  name: string;
   postalCode: string;
   street: string;
   website: string;
@@ -37,6 +37,7 @@ export async function createLocation(
   street: string,
   website: string,
   userId: number,
+  specializationIds: number[],
 ) {
   const [location] = await sql<Location[]>`
     INSERT INTO locations
@@ -45,10 +46,11 @@ export async function createLocation(
       postal_code,
       street,
       website,
-      user_id
+      user_id,
+      specialization_ids
       )
     VALUES
-      (${name}, ${postalCode}, ${street}, ${website}, ${userId})
+      (${name}, ${postalCode}, ${street}, ${website}, ${userId}, ${specializationIds})
     RETURNING *
   `;
 
@@ -295,7 +297,7 @@ export async function updateLocation(
 
   // Returning school including matching specializations
   const locationWithSpecializations = {
-    ...location!,
+    ...location,
     specializations: [...specializations],
   };
   return locationWithSpecializations;

@@ -9,6 +9,7 @@ const locationSchema = z.object({
   street: z.string(),
   website: z.string(),
   userId: z.number(),
+  // specializationIds: z.number(),
 });
 
 export type LocationResponseBodyGet =
@@ -23,6 +24,7 @@ export type LocationResponseBodyGet =
         street: string;
         website: string;
         userId: number;
+        // specializationIds: number[];
       };
     };
 

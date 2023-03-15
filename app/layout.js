@@ -22,11 +22,16 @@ export default async function RootLayout({ children }) {
       <head />
       <body>
         <header className={styles.header}>
-          {/* <section>banner</section> */}
+          {/* <section >
+          </section> */}
           <nav className={styles.nav}>
             <Link href="/">Home</Link>
             <Link href="/locations">Locations</Link>
-            <Image className={styles.image} src={logo} />
+            <div>
+              <Link href="/">
+                <Image className={styles.image} src={logo} />
+              </Link>
+            </div>
             <Link href="/about">About</Link>
             <div>
               {user ? (

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getValidSessionByToken } from '../../../database/sessions';
 import LoginForm from './Loginform';
 
-type Props = { searchParams: { returnTo?: string | string[] } };
+type Props = { searchParams: { returnTo: string | string[] } };
 
 export default async function LoginPage(props: Props) {
   // check if i have a valid session

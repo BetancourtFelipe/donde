@@ -8,7 +8,7 @@ const locationSchema = z.object({
   street: z.string(),
   website: z.string(),
   userId: z.number(),
-  // specializationIds: z.number(),
+  specializationIds: z.array(z.number()),
 });
 
 export type LocationResponseBodyPost =
@@ -20,7 +20,7 @@ export type LocationResponseBodyPost =
         street: string;
         website: string;
         userId: number;
-        // specializationIds: number[];
+        specializationIds: number[];
       };
     };
 
@@ -28,7 +28,15 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<LocationResponseBodyPost>> {
   const body = await request.json();
-  // Parse the request body using the schema defined above.
+  const selectedSpecializations = body.specializations || [];
+  const specializationsDatabaseStructure = selectedSpecializations?.map(
+    (specialization: any) => {
+      return {
+        id: specialization.value,
+        name: specialization.label,
+      };
+    },
+  );
 
   const result = locationSchema.safeParse(body);
 
@@ -38,7 +46,8 @@ export async function POST(
     });
   }
 
-  const { name, postalCode, street, website, userId } = result.data;
+  const { name, postalCode, street, website, specializationIds, userId } =
+    result.data;
 
   if (!name || !postalCode || !street) {
     return new NextResponse(
@@ -53,8 +62,10 @@ export async function POST(
     postalCode,
     street,
     website,
-    userId,
-    // [specializationIds],
+    specializationsDatabaseStructure?.map(
+      (specialization) => specialization.id,
+    ),
+    [userId],
   );
 
   if (!newLocation) {
@@ -72,7 +83,7 @@ export async function POST(
         street: newLocation.street,
         website: newLocation.website,
         userId: newLocation.userId,
-        // specializationIds: newLocation.specializations,
+        specializationIds: newLocation.specializationIds,
       },
     }),
   );
