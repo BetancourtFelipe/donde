@@ -58,6 +58,42 @@ export default async function RootLayout({ children }) {
                 </>
               )}
             </div>
+            {/* <div>
+              <div>
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="#">Link</a>
+                  </li>
+                  <li class="dropdown">
+                    <a
+                      href="#"
+                      class="dropdown-toggle"
+                      data-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Menü <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#">Aktion</a>
+                      </li>
+                      <li>
+                        <a href="#">Andere Aktion</a>
+                      </li>
+                      <li>
+                        <a href="#">Irgendwas anderes</a>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <a href="#">Abgetrennter Link</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div> */}
           </nav>
         </header>
 

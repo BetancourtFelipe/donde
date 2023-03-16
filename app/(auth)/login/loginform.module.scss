@@ -13,7 +13,6 @@
   color: black;
   box-shadow: 5px 5px #f1edff;
   text-transform: uppercase;
-
   padding: 20px;
 }
 
@@ -24,11 +23,11 @@
   background-color: #030303;
   color: white;
   text-transform: uppercase;
-  // transition-duration: 0.4s;
+  transition-duration: 0.5s;
 }
 
 .loginButton:hover {
   color: black;
-  background-color: #f1edff;
+  background-color: white;
   border-radius: 5px;
 }

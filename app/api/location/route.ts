@@ -28,15 +28,17 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<LocationResponseBodyPost>> {
   const body = await request.json();
-  const selectedSpecializations = body.specializations || [];
-  const specializationsDatabaseStructure = selectedSpecializations?.map(
-    (specialization: any) => {
-      return {
-        id: specialization.value,
-        name: specialization.label,
-      };
-    },
-  );
+  // const selectedSpecializations = body.specializations || [];
+  // const specializationsDatabaseStructure = selectedSpecializations?.map(
+  //   (specialization: any) => {
+  //     return {
+  //       id: specialization.value,
+  //       name: specialization.label,
+  //     };
+  //   },
+  // );
+
+  console.log(body);
 
   const result = locationSchema.safeParse(body);
 
@@ -62,10 +64,11 @@ export async function POST(
     postalCode,
     street,
     website,
-    specializationsDatabaseStructure?.map(
-      (specialization) => specialization.id,
-    ),
-    [userId],
+    userId,
+    specializationIds,
+    // specializationsDatabaseStructure?.map(
+    //   (specialization) => specialization.id,
+    // ),
   );
 
   if (!newLocation) {
@@ -80,7 +83,6 @@ export async function POST(
       location: {
         name: newLocation.name,
         postalCode: newLocation.postalCode,
-        street: newLocation.street,
         website: newLocation.website,
         userId: newLocation.userId,
         specializationIds: newLocation.specializationIds,

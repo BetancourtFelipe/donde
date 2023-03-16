@@ -7,7 +7,7 @@
     border-radius: 80px 80px;
   }
   .nav {
-    background: linear-gradient(to right, #6d7cff, #bcb8f0 60%);
+    // background: linear-gradient(to right, #6d7cff, #bcb8f0 60%);
     display: flex;
     height: 150px;
     border-radius: 5px;
@@ -16,7 +16,7 @@
     padding: 50px;
     margin: 20px;
     border: solid 1px #a9a6dc;
-    gap: 250px;
+    // gap: 250px;
     font-size: 1em;
 
     a:hover {
@@ -28,15 +28,14 @@
     span + a {
       color: #030303;
       text-decoration: none;
-
+      border: 1px solid black;
+      border-radius: 5px;
       text-transform: uppercase;
-      font-weight: 500;
-      display: inline-block;
       display: block;
       padding: 5px 10px;
       margin: 10px;
+      transition-duration: 0.8s;
     }
-
     .login {
       border: solid black 1px;
       border-radius: 5px;

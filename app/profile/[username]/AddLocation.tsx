@@ -16,9 +16,6 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
   const userId = props.user.id;
-
-  console.log(props);
-
   const maxSelectOptions = 5;
   const handleSpecializationSelect = (selectedOption: Specialization[]) => {
     setSelectedSpecializations(selectedOption);
@@ -27,7 +24,14 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
     <form
       onSubmit={async (event) => {
         event.preventDefault();
-
+        const specializationsDatabaseStructure = selectedSpecializations?.map(
+          (specialization: any) => {
+            return {
+              id: specialization.value,
+              name: specialization.label,
+            };
+          },
+        );
         const response = await fetch('/api/location', {
           method: 'POST',
           body: JSON.stringify({
@@ -36,6 +40,9 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
             street,
             website,
             userId,
+            specializationIds: specializationsDatabaseStructure?.map(
+              (specialization) => specialization.id,
+            ),
           }),
         });
 
