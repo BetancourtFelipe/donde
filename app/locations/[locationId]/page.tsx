@@ -26,16 +26,14 @@ export default async function SingleLocationPage(props: Props) {
       <h1>Location Profile{locationId}</h1>
       <main>
         <div>
-          <h2>name:{singleLocation.name}</h2>
-          <p>postal code:{singleLocation.postalCode}</p>
-          <p>street:{singleLocation.street}</p>
-          <p>website:{singleLocation.website}</p>
-          <div>
-            <p>
-              specializations:
-              <ul>{/* <li>{singleLocation.specializationsId}</li> */}</ul>
-            </p>
-          </div>
+          <h2>name: {singleLocation.name}</h2>
+          <p>postal code: {singleLocation.postalCode}</p>
+          <p>street: {singleLocation.street}</p>
+          <p>website: {singleLocation.website}</p>
+          <p>
+            specializations:
+            {singleLocation.specializationIds}
+          </p>
         </div>
       </main>
     </>

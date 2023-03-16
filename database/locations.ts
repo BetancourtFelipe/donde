@@ -46,46 +46,43 @@ export async function createLocation(
       postal_code,
       street,
       website,
-      user_id,
-      specialization_ids
+      user_id
       )
     VALUES
-      (${name}, ${postalCode}, ${street}, ${website}, ${userId}, ${specializationIds})
+      (${name}, ${postalCode}, ${street}, ${website}, ${userId})
     RETURNING *
   `;
 
-  return location;
+  // Insert specializations
+  for (const specializationId of specializationIds) {
+    await sql`INSERT INTO locationSpecializations
+     (location_id, specialization_id)
+    VALUES
+     (${location!.id}, ${specializationId})`;
+  }
+
+  // Joint query to retrieve the matching specializations
+  const specializations = await sql<Specialization[]>`
+  SELECT
+    specializations.id,
+    specializations.name
+  FROM
+    locations,
+    specializations,
+    locationSpecializations
+  WHERE
+    ${location!.id} = locationSpecializations.location_id AND
+    specializations.id = locationSpecializations.specialization_id AND
+    ${location!.id} = locations.id
+  `;
+
+  // Returning location including matching specializations
+  const locationWithSpecializations = {
+    ...location!,
+    specializations: [...specializations],
+  };
+  return locationWithSpecializations;
 }
-// Insert specializations
-// for (const specializationId of specializationIds) {
-//   await sql`INSERT INTO locations_specializations
-//    (location_id, specialization_id)
-//   VALUES
-//   --  (${location!.id}, ${specializationId})`;
-// }
-
-// // Joint query to retrieve the matching specializations
-// const specializations = await sql<Specialization[]>`
-// SELECT
-//   specializations.id,
-//   specializations.name
-// FROM
-//   locations,
-//   specializations,
-//   locations_specializations
-// WHERE
-//   ${location!.id} = locations_specializations.location_id AND
-//   specializations.id = locations_specializations.specialization_id AND
-//   ${location!.id} = locations.id
-// `;
-
-// // Returning location including matching specializations
-// const locationWithSpecializations = {
-//   ...location!,
-//   specializations: [...specializations],
-// };
-// return locationWithSpecializations;
-// }
 
 export const getLocationById = cache(async (id: number) => {
   const [location] = await sql<Location[]>`
@@ -112,36 +109,14 @@ export async function getLocationWithSpecializationsById(locationId: number) {
     FROM
       locations,
       specializations,
-      locations_specializations,
+      locationSpecializations,
     WHERE
-      ${locationId} = locations_specializations.location_id AND
-      specializations.id = locations_specializations.specialization_id AND
+      ${locationId} = locationSpecializations.location_id AND
+      specializations.id = locationSpecializations.specialization_id AND
       locations.id = ${locationId}
   `;
-
   return locationWithSpecializations;
 }
-
-// export async function getAllLocations() {
-//   const locations = await sql<LocationWithSpecializations[]>`
-//     SELECT
-//      locations.id AS location_id,
-//      locations.name AS location_name,
-//      locations.postal_code,
-//      locations.street,
-//      locations.website,
-//      specializations.id as specialization_id,
-//      specializations.name as specialization_name
-//     FROM
-//      locations,
-//      specializations,
-//      locations_specializations
-//     WHERE
-//      specializations.id = locations_specializations.specialization_id AND
-//      locations.id = locations_specializations.location_id
-//   `;
-//   return locations;
-// }
 
 export async function getAllLocations() {
   const locations = await sql<LocationWithSpecializations[]>`
@@ -166,10 +141,10 @@ export async function getAllLocationsWithLimit(limit: number) {
     FROM
      locations,
      specializations,
-     locations_specializations
+     locationSpecializations
     WHERE
-     specializations.id = locations_specializations.specialization_id AND
-     locations.id = locations_specializations.location_id
+     specializations.id = locationSpecializations.specialization_id AND
+     locations.id = locationSpecializations.location_id
     LIMIT ${limit}
   `;
   return locations;
@@ -204,12 +179,12 @@ export const getLocationByUserId = cache(async (userId: string) => {
 //      users,
 //      locations,
 //      specializations,
-//      locations_specializations
+//      locationSpecializations
 //     WHERE
 //      users.id = ${userId} AND
 //      locations.user_id = ${userId} AND
-//      specializations.id = locations_specializations.specialization_id AND
-//      locations.id = locations_specializations.location_id
+//      specializations.id = locationSpecializations.specialization_id AND
+//      locations.id = locationSpecializations.location_id
 //   `;
 //   return location;
 // }
@@ -229,14 +204,14 @@ export async function getLocationByToken(token: string) {
      users,
      locations,
      specializations,
-     locations_specializations,
+     locationSpecializations,
      sessions
     WHERE
      sessions.token = ${token} AND
      users.id = sessions.user_id AND
      locations.user_id = users.id AND
-     specializations.id = locations_specializations.specialization_id AND
-     locations.id = locations_specializations.location_id
+     specializations.id = locationSpecializations.specialization_id AND
+     locations.id = locationSpecializations.location_id
   `;
   return location;
 }
@@ -266,15 +241,15 @@ export async function updateLocation(
   // Delete original specializations
   await sql<{ locationId: number; specializationId: number }[]>`
     DELETE FROM
-      locations_specializations
+      locationSpecializations
     WHERE
-      locations_specializations.location_id = ${location!.id}
+      locationSpecializations.location_id = ${location!.id}
     RETURNING *
   `;
 
   // Insert new specializations
   for (const specializationId of specializationIds) {
-    await sql`INSERT INTO schools_specializations
+    await sql`INSERT INTO locationSpecializations
      (location_id, specialization_id)
     VALUES
      (${location!.id}, ${specializationId})`;
@@ -288,14 +263,14 @@ export async function updateLocation(
   FROM
     locations,
     specializations,
-    locations_specializations
+    locationsSpecializations
   WHERE
-    ${location!.id} = locations_specializations.location_id AND
-    specializations.id = locations_specializations.specialization_id AND
+    ${location!.id} = locationsSpecializations.location_id AND
+    specializations.id = locationsSpecializations.specialization_id AND
     ${location!.id} = locations.id
   `;
 
-  // Returning school including matching specializations
+  // Returning location including matching specializations
   const locationWithSpecializations = {
     ...location,
     specializations: [...specializations],
