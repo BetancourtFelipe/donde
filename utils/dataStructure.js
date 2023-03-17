@@ -1,14 +1,14 @@
-export function LocationWithSpecializations(locationWithSpecializations) {
+export function getLocationWithSpecializations(singleLocation) {
   const location = {
-    locationId: locationWithSpecializations[0].locationId,
-    name: locationWithSpecializations[0].name,
-    postalCode: locationWithSpecializations[0].postalCode,
-    street: locationWithSpecializations[0].street,
-    website: locationWithSpecializations[0].website,
-    specializations: locationWithSpecializations.map(() => {
+    locationId: singleLocation[0].locationId,
+    locationName: singleLocation[0].locationName,
+    postalCode: singleLocation[0].postalCode,
+    street: singleLocation[0].street,
+    website: singleLocation[0].website,
+    specializations: singleLocation.map((single) => {
       return {
-        specializationId: locationWithSpecializations.specializationId,
-        specializationName: locationWithSpecializations.specializationName,
+        specializationId: single.specializationId,
+        specializationName: single.specializationName,
       };
     }),
   };

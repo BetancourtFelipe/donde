@@ -28,9 +28,7 @@ export default async function RegisterPage(props: Props) {
         <div className={styles.form}>
           <h2>become part of donde!</h2>
           <p>
-            with your private account, you can discover
-            <br />
-            locations in vienna.
+            with your private account, you can discover locations in vienna.
             <br />
             save them, rate them or comment them as you like.
             <br /> search by specializations and find what suits you!
@@ -38,9 +36,8 @@ export default async function RegisterPage(props: Props) {
             <br />
             you want to promote your location and be discovered!
             <br />
-            just register your self and create a profile for your location.
-            <br />
-            get ratings, comments. just sing up!
+            just register your self and create a profile for your location. get
+            ratings, comments & much more.
           </p>
         </div>
         <div className={styles.form}>
