@@ -97,7 +97,9 @@ export const getLocationById = cache(async (id: number) => {
 });
 
 export async function getLocationWithSpecializationsById(locationId: number) {
-  const locationWithSpecializations = await sql<LocationWithSpecializations[]>`
+  const [locationWithSpecializations] = await sql<
+    LocationWithSpecializations[]
+  >`
     SELECT
       locations.id AS location_id,
       locations.name AS location_name,
@@ -109,7 +111,7 @@ export async function getLocationWithSpecializationsById(locationId: number) {
     FROM
       locations,
       specializations,
-      locationSpecializations,
+      locationSpecializations
     WHERE
       ${locationId} = locationSpecializations.location_id AND
       specializations.id = locationSpecializations.specialization_id AND

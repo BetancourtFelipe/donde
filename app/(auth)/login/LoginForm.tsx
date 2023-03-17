@@ -44,21 +44,28 @@ export default function LoginForm(props: { returnTo: string | string[] }) {
         <div key={`error-${error.message}`}>Error: {error.message}</div>
       ))}
       <div>
-        <div className={styles.login}>
-          <label className={styles.form}>
+        <div>
+          <label>
             username:
+            <br />
             <input
               value={username}
+              className={styles.input}
               onChange={(event) => setUsername(event.currentTarget.value)}
             />
           </label>
-          <label className={styles.form}>
+          <br />
+          <label>
             password:
+            <br />
             <input
               value={password}
+              className={styles.input}
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
           </label>
+          <br />
+          <br />
           <button className={styles.loginButton}>Login</button>
         </div>
       </div>

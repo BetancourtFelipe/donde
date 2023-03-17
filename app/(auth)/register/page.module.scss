@@ -1,11 +1,10 @@
 .register {
   display: flex;
   justify-content: space-evenly;
-  gap: 40px;
+  gap: 50px;
   margin: 10px;
-  padding: 40px;
+  padding: 90px;
   flex-wrap: wrap;
-  // align-content: center;
 }
 
 .form {
@@ -18,6 +17,7 @@
   text-transform: uppercase;
   margin: 10px;
   padding: 20px;
+  font-weight: 600;
 }
 
 .input {
@@ -30,4 +30,11 @@
   padding: 5px 10px;
   background-color: #030303;
   color: white;
+  transition-duration: 0.5s;
+}
+
+.registerButton:hover {
+  color: black;
+  background-color: white;
+  border-radius: 5px;
 }

@@ -1,7 +1,7 @@
 .header {
   .image {
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 20px;
     padding: 20px;
     border-radius: 80px 80px;
@@ -15,9 +15,10 @@
     justify-content: space-around;
     padding: 50px;
     margin: 20px;
-    border: solid 1px #a9a6dc;
+    // border: solid 1px #a9a6dc;
     // gap: 250px;
     font-size: 1em;
+    font-weight: 600;
 
     a:hover {
       color: white;

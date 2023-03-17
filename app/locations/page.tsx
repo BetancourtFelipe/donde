@@ -7,18 +7,18 @@ export default async function LocationsPage() {
 
   return (
     <>
-      <h1>Locations</h1>
+      {/* <h1>Locations</h1> */}
       <main>
         <div className={styles.locationCard}>
           {locations.map((location) => {
             return (
-              <div
-                key={`location-${location.id}`}
-                className={styles.locationCardDetails}
-              >
+              <div key={`location-${location.id}`}>
                 <Link href={`/locations/${location.id}`}>
-                  <h2 key={`location-${location.id}`}>{location.name}</h2>
-                  <p>{location.website}</p>
+                  <div className={styles.locationCardDetails}>
+                    <h2 key={`location-${location.id}`}>{location.name}</h2>
+                    <p>{location.street}</p>
+                    <p>{location.postalCode} vienna</p>
+                  </div>
                 </Link>
               </div>
             );

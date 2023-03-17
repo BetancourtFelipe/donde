@@ -19,12 +19,6 @@ export default function HomePage() {
         <section className={styles.description}>
           <h3>Experience</h3>
         </section>
-
-        <section className={styles.description}>
-          <h3>more</h3>
-          <p>skhdkhlshkds</p>
-        </section>
-        <Image className={styles.image} src={restaurantlanding} />
       </div>
     </main>
   );

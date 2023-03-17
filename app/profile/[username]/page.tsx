@@ -27,9 +27,9 @@ export default async function UserProfile({ params }: Props) {
     <main className={styles.main}>
       <div className={styles.profile}>
         <h1>{user.username}</h1>
-        <p>id: {user.id}</p>
       </div>
       <div className={styles.createLocation}>
+        <h2>Add your location</h2>
         <AddLocation user={user} specializations={specializations} />
       </div>
     </main>

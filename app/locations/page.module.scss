@@ -1,9 +1,9 @@
 .locationCard {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+  flex-direction: column-reverse;
 }
 
 .locationCardDetails {
@@ -12,5 +12,7 @@
   color: black;
   box-shadow: 5px 5px #f1edff;
   text-transform: uppercase;
-  width: 300px;
+  width: 650px;
+  text-decoration: none;
+  text-align: center;
 }

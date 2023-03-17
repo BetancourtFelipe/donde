@@ -25,13 +25,10 @@ export default async function RootLayout({ children }) {
           {/* <section >
           </section> */}
           <nav className={styles.nav}>
+            <Image className={styles.image} src={logo} />
             <Link href="/">Home</Link>
             <Link href="/locations">Locations</Link>
-            <div>
-              <Link href="/">
-                <Image className={styles.image} src={logo} />
-              </Link>
-            </div>
+
             <Link href="/about">About</Link>
             <div>
               {user ? (

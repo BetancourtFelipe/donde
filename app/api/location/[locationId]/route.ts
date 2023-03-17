@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getLocationById } from '../../../../database/locations';
+import {
+  getLocationById,
+  getLocationWithSpecializationsById,
+} from '../../../../database/locations';
 
 const locationSchema = z.object({
   locationId: z.number(),
@@ -18,7 +21,7 @@ export type LocationResponseBodyGet =
     }
   | {
       location: {
-        id: number;
+        locationId: number;
         name: string;
         postalCode: string;
         street: string;
@@ -56,7 +59,7 @@ export async function GET(
     );
   }
 
-  const singleLocation = await getLocationById(locationId);
+  const singleLocation = await getLocationWithSpecializationsById(locationId);
 
   if (!singleLocation) {
     return NextResponse.json(

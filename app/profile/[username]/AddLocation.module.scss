@@ -1,19 +1,18 @@
-.loginButton {
+.input {
+  border-radius: 5px;
+}
+
+.addButton {
   border: solid black 1px;
   border-radius: 5px;
-  padding: 14px 20px;
+  padding: 5px 10px;
   background-color: #030303;
   color: white;
-  text-transform: uppercase;
   transition-duration: 0.5s;
 }
 
-.loginButton:hover {
+.addButton:hover {
   color: black;
   background-color: white;
-  border-radius: 5px;
-}
-
-.input {
   border-radius: 5px;
 }

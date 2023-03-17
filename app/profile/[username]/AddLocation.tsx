@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { Specialization } from '../../../database/specializations';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { LocationResponseBodyPost } from '../../api/location/route';
+import styles from './AddLocation.module.scss';
 
 export default function AddLocation(props: { returnTo: string | string[] }) {
   const [name, setName] = useState('');
@@ -68,32 +69,40 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
       ))}
       <label>
         name:
+        <br />
         <input
           value={name}
+          className={styles.input}
           onChange={(event) => setName(event.currentTarget.value)}
         />
       </label>
       <br />
       <label>
         postal code:
+        <br />
         <input
           value={postalCode}
+          className={styles.input}
           onChange={(event) => setPostalCode(event.currentTarget.value)}
         />
       </label>
       <br />
       <label>
         street:
+        <br />
         <input
           value={street}
+          className={styles.input}
           onChange={(event) => setStreet(event.currentTarget.value)}
         />
       </label>
       <br />
       <label>
         website:
+        <br />
         <input
           value={website}
+          className={styles.input}
           onChange={(event) => setWebsite(event.currentTarget.value)}
         />
       </label>
@@ -101,6 +110,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
       <label htmlFor="specialization">Choose up to 5 specializations</label>
       <div>
         <Select
+          className={styles.input}
           onChange={(selectedOption) =>
             handleSpecializationSelect(selectedOption as Specialization[])
           }
@@ -120,7 +130,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         />
       </div>
       <br />
-      <button>Add Location</button>
+      <button className={styles.addButton}>Add Location</button>
     </form>
   );
 }
