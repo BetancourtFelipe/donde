@@ -7,12 +7,16 @@
 }
 
 .locationCardDetails {
-  border-radius: 5px;
-  background-image: linear-gradient(#faf7ff, #aba9bb 90%);
-  color: black;
-  box-shadow: 5px 5px #f1edff;
-  text-transform: uppercase;
-  width: 650px;
-  text-decoration: none;
+  width: 600px;
+  height: 200px;
   text-align: center;
+  color: black;
+  box-shadow: 5px 10px black;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 10px;
+  border-image: linear-gradient(#6d7cff, #bf2892) 60;
+  border-width: 6px;
+  border-style: solid;
+  border-radius: 5px;
 }
