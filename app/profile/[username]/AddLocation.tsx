@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Select from 'react-select';
+// import { text } from 'stream/consumers';
 import { Specialization } from '../../../database/specializations';
 import { getSafeReturnToPath } from '../../../utils/validation';
 import { LocationResponseBodyPost } from '../../api/location/route';
@@ -129,6 +130,10 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
           placeholder="Select specializations"
         />
       </div>
+      <label>
+        info:
+        <textarea placeholder="info"> </textarea>
+      </label>
       <br />
       <button className={styles.addButton}>Add Location</button>
     </form>

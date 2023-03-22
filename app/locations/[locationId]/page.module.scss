@@ -25,3 +25,59 @@
   background-color: #f1edff;
   list-style: none;
 }
+
+.raiting {
+  border-radius: 20px;
+  // background-image: linear-gradient(#faf7ff, #aba9bb 90%);
+  width: 310px;
+  height: 200px;
+  text-align: center;
+  color: black;
+  box-shadow: 5px 10px black;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+  border: 6px solid #6d7cff;
+  order: 3;
+}
+
+.map {
+  border-radius: 20px;
+  // background-image: linear-gradient(#faf7ff, #aba9bb 90%);
+  width: 310px;
+  height: 100px;
+  text-align: center;
+  color: black;
+  box-shadow: 5px 10px black;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+  border: 6px solid #6d7cff;
+  order: 2;
+}
+
+.info {
+  border-radius: 20px;
+  // background-image: linear-gradient(#faf7ff, #aba9bb 90%);
+  width: 310px;
+  height: 100px;
+  text-align: center;
+  color: black;
+  box-shadow: 5px 10px black;
+  text-transform: uppercase;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+  border: 6px solid #6d7cff;
+  order: 4;
+}
+
+// border-radius: 50px; /*1*/
+// border: 10px solid transparent; /*2*/
+// background: linear-gradient(45deg, red, blue) border-box; /*3*/
+// -webkit-mask: /*4*/ linear-gradient(#fff 0 0) padding-box,
+//   linear-gradient(#fff 0 0);
+// -webkit-mask-composite: xor; /*5'*/
+// mask-composite: exclude; /*5*/

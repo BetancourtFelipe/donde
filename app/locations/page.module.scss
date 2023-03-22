@@ -15,8 +15,9 @@
   text-transform: uppercase;
   margin: 10px;
   padding: 10px;
-  border-image: linear-gradient(#6d7cff, #bf2892) 60;
-  border-width: 6px;
-  border-style: solid;
-  border-radius: 5px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, purple, orange) 1;
+  // border-width: 10px;
+  // border-style: solid;
+  // border-radius: 5px;
 }

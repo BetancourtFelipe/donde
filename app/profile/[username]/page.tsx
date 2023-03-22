@@ -31,8 +31,6 @@ export default async function UserProfile({ params }: Props) {
     notFound();
   }
 
-  console.log(session);
-
   // const userId = await getUserBySessionToken(token);
 
   // if (!userId) {
