@@ -5,6 +5,7 @@ import { Specialization } from './specializations';
 export type Location = {
   id: number;
   name: string;
+  info: string;
   postalCode: string;
   street: string;
   website: string;
@@ -14,6 +15,7 @@ export type Location = {
 export type LocationWithSpecializations = {
   id: number;
   name: string;
+  info: string;
   postalCode: string;
   street: string;
   website: string;
@@ -24,6 +26,7 @@ export type LocationWithSpecializations = {
 export type LocationWithSpecializationsAndUserId = {
   id: number;
   name: string;
+  info: string;
   postalCode: string;
   street: string;
   website: string;
@@ -33,6 +36,7 @@ export type LocationWithSpecializationsAndUserId = {
 
 export async function createLocation(
   name: string,
+  info: string,
   postalCode: string,
   street: string,
   website: string,
@@ -43,13 +47,14 @@ export async function createLocation(
     INSERT INTO locations
       (
       name,
+      info,
       postal_code,
       street,
       website,
       user_id
       )
     VALUES
-      (${name}, ${postalCode}, ${street}, ${website}, ${userId})
+      (${name}, ${info}, ${postalCode}, ${street}, ${website}, ${userId})
     RETURNING *
   `;
 
@@ -101,6 +106,7 @@ export async function getLocationWithSpecializationsById(locationId: number) {
     SELECT
       locations.id AS location_id,
       locations.name AS location_name,
+      locations.info,
       locations.postal_code,
       locations.street,
       locations.website,
@@ -133,6 +139,7 @@ export async function getAllLocationsWithLimit(limit: number) {
     SELECT
      locations.id AS location_id,
      locations.name AS location_name,
+     locations.info,
      locations.postal_code,
      locations.street,
      locations.website,
@@ -195,6 +202,7 @@ export async function getLocationByToken(token: string) {
     SELECT
      locations.id AS location_id,
      locations.name AS location_name,
+     locations.info,
      locations.postal_code,
      locations.street,
      locations.website,
@@ -218,6 +226,7 @@ export async function getLocationByToken(token: string) {
 
 export async function updateLocation(
   name: string,
+  info: string,
   postalCode: string,
   street: string,
   website: string,
@@ -229,6 +238,7 @@ export async function updateLocation(
       locations
     SET
       name = ${name},
+      info = ${info},
       postal_code = ${postalCode},
       street = ${street},
       website = ${website},

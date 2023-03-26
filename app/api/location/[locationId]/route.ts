@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import {
-  getLocationById,
-  getLocationWithSpecializationsById,
-} from '../../../../database/locations';
+import { getLocationWithSpecializationsById } from '../../../../database/locations';
 
 const locationSchema = z.object({
   locationId: z.number(),
   name: z.string(),
+  info: z.string(),
   postalCode: z.string(),
   street: z.string(),
   website: z.string(),
@@ -23,6 +21,7 @@ export type LocationResponseBodyGet =
       location: {
         locationId: number;
         name: string;
+        info: string;
         postalCode: string;
         street: string;
         website: string;

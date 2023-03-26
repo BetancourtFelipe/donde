@@ -10,6 +10,7 @@ import styles from './AddLocation.module.scss';
 
 export default function AddLocation(props: { returnTo: string | string[] }) {
   const [name, setName] = useState('');
+  const [info, setInfo] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [street, setStreet] = useState('');
   const [selectedSpecializations, setSelectedSpecializations] =
@@ -38,6 +39,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
           method: 'POST',
           body: JSON.stringify({
             name,
+            info,
             postalCode,
             street,
             website,
@@ -131,8 +133,15 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         />
       </div>
       <label>
-        info:
-        <textarea placeholder="info"> </textarea>
+        info: <br />
+        <textarea
+          className={styles.textarea}
+          placeholder="info"
+          value={info}
+          onChange={(event) => setInfo(event.currentTarget.value)}
+        >
+          {' '}
+        </textarea>
       </label>
       <br />
       <button className={styles.addButton}>Add Location</button>

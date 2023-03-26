@@ -39,23 +39,14 @@
   padding: 10px;
   text-decoration: none;
   border: 6px solid #6d7cff;
-  order: 3;
+  // order: 3;
 }
 
 .map {
-  border-radius: 20px;
-  // background-image: linear-gradient(#faf7ff, #aba9bb 90%);
-  width: 310px;
-  height: 100px;
-  text-align: center;
-  color: black;
-  box-shadow: 5px 10px black;
-  text-transform: uppercase;
-  margin: 10px;
-  padding: 10px;
-  text-decoration: none;
+  width: 50vw;
+  height: 50vh;
   border: 6px solid #6d7cff;
-  order: 2;
+  border-radius: 20px;
 }
 
 .info {
@@ -71,7 +62,7 @@
   padding: 10px;
   text-decoration: none;
   border: 6px solid #6d7cff;
-  order: 4;
+  // order: 4;
 }
 
 // border-radius: 50px; /*1*/

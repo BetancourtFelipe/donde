@@ -4,6 +4,7 @@ import { createLocation } from '../../../database/locations';
 
 const locationSchema = z.object({
   name: z.string(),
+  info: z.string(),
   postalCode: z.string(),
   street: z.string(),
   website: z.string(),
@@ -16,6 +17,7 @@ export type LocationResponseBodyPost =
   | {
       location: {
         name: string;
+        info: string;
         postalCode: string;
         street: string;
         website: string;
@@ -37,7 +39,7 @@ export async function POST(
     });
   }
 
-  const { name, postalCode, street, website, specializationIds, userId } =
+  const { name, info, postalCode, street, website, specializationIds, userId } =
     result.data;
 
   if (!name || !postalCode || !street) {
@@ -50,6 +52,7 @@ export async function POST(
   // Create a new location in the database.
   const newLocation = await createLocation(
     name,
+    info,
     postalCode,
     street,
     website,
@@ -68,6 +71,7 @@ export async function POST(
     JSON.stringify({
       location: {
         name: newLocation.name,
+        info: newLocation.info,
         postalCode: newLocation.postalCode,
         website: newLocation.website,
         userId: newLocation.userId,

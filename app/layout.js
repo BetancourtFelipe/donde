@@ -28,7 +28,6 @@ export default async function RootLayout({ children }) {
             <Image className={styles.image} src={logo} />
             <Link href="/">Home</Link>
             <Link href="/locations">Locations</Link>
-
             <Link href="/about">About</Link>
             <div>
               {user ? (
