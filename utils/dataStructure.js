@@ -2,8 +2,11 @@ export function getLocationWithSpecializations(singleLocation) {
   const location = {
     locationId: singleLocation[0].locationId,
     locationName: singleLocation[0].locationName,
+    info: singleLocation[0].info,
     postalCode: singleLocation[0].postalCode,
     street: singleLocation[0].street,
+    latCoord: singleLocation[0].locationLatCoord,
+    longCoord: singleLocation[0].locationLongCoord,
     website: singleLocation[0].website,
     specializations: singleLocation.map((single) => {
       return {

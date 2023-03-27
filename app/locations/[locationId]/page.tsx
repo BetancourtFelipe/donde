@@ -3,8 +3,8 @@ import { StrictMode } from 'react';
 import { getLocationWithSpecializationsById } from '../../../database/locations';
 import { getLocationWithSpecializations } from '../../../utils/dataStructure';
 import Map from '../../components/Map/Map';
+import StarRating from '../../components/Starraiting';
 import styles from './page.module.scss';
-import StarRating from './Starraiting';
 
 type Props = {
   params: {
@@ -13,6 +13,8 @@ type Props = {
     info: string;
     postalCode: string;
     street: string;
+    latCoord: number;
+    longCoord: number;
     website: string;
     specializationName: string;
   };
@@ -38,8 +40,8 @@ export default async function SingleLocationPage(props: Props) {
             <h3>name:</h3> <p>{location.locationName}</p>
             <h3>street:</h3> <p>{location.street}</p>
             <h3>postal code:</h3> <p>{location.postalCode} Vienna</p>
-            <h3>website:</h3> <p>{location.website}</p>
-            <h3>info: </h3> <p>{location.info}</p>
+            <h3>website:</h3>
+            <p>{location.website}</p>
             <h3>specializations: </h3>
             <div>
               {location.specializations.map((specialization) => {
@@ -54,9 +56,12 @@ export default async function SingleLocationPage(props: Props) {
               })}
             </div>
           </div>
+          <div className={styles.info}>
+            <h3>info: </h3> <p>{location.info}</p>
+          </div>
 
-          <div className={styles.raiting}>
-            Raiting:
+          <div className={styles.rating}>
+            Rating:
             <StrictMode>
               <StarRating />
             </StrictMode>

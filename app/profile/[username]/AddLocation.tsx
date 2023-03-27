@@ -123,11 +123,11 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         />
       </label> */}
       <label>
-        street:
+        street: <br />
         <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX}>
           <input
             required
-            className="input input-bordered input-sm w-full max-w-xs mt-4 bg-white"
+            className={styles.input}
             value={street}
             onChange={(event) => setStreet(event.currentTarget.value)}
             autoComplete="address-line1"
@@ -171,14 +171,11 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         info: <br />
         <textarea
           className={styles.textarea}
-          placeholder="info"
-          value={info}
+          placeholder="provide some information of your location"
           onChange={(event) => setInfo(event.currentTarget.value)}
-        >
-          {' '}
-        </textarea>
+        />
       </label>
-      <br />
+      <br /> <br />
       <button className={styles.addButton}>Add Location</button>
     </form>
   );

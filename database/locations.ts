@@ -77,7 +77,7 @@ export async function createLocation(
   }
 
   // Joint query to retrieve the matching specializations
-  const specializations = await sql<Specialization[]>`
+  const specializations = sql<Specialization[]>`
   SELECT
     specializations.id,
     specializations.name
@@ -93,8 +93,8 @@ export async function createLocation(
 
   // Returning location including matching specializations
   const locationWithSpecializations = {
-    ...location!,
-    specializations: [...specializations],
+    ...(location ?? {}),
+    specializations: [...[specializations]],
   };
   return locationWithSpecializations;
 }
@@ -222,7 +222,7 @@ export async function getLocationByToken(token: string) {
      locations.postal_code,
      locations.street,
      locations.latCoord,
-      locations.longCoord,
+     locations.longCoord,
      locations.website,
      specializations.id as specialization_id,
      specializations.name as specialization_name
