@@ -7,6 +7,8 @@ const locationSchema = z.object({
   info: z.string(),
   postalCode: z.string(),
   street: z.string(),
+  latCoord: z.number(),
+  longCoord: z.number(),
   website: z.string(),
   userId: z.number(),
   specializationIds: z.array(z.number()),
@@ -20,6 +22,8 @@ export type LocationResponseBodyPost =
         info: string;
         postalCode: string;
         street: string;
+        latCoord: number;
+        longCoord: number;
         website: string;
         userId: number;
         specializationIds: number[];
@@ -39,8 +43,17 @@ export async function POST(
     });
   }
 
-  const { name, info, postalCode, street, website, specializationIds, userId } =
-    result.data;
+  const {
+    name,
+    info,
+    postalCode,
+    street,
+    latCoord,
+    longCoord,
+    website,
+    specializationIds,
+    userId,
+  } = result.data;
 
   if (!name || !postalCode || !street) {
     return new NextResponse(
@@ -55,6 +68,8 @@ export async function POST(
     info,
     postalCode,
     street,
+    latCoord,
+    longCoord,
     website,
     userId,
     specializationIds,
@@ -73,6 +88,9 @@ export async function POST(
         name: newLocation.name,
         info: newLocation.info,
         postalCode: newLocation.postalCode,
+        street: newLocation.street,
+        latCoord: newLocation.latCoord,
+        longCoord: newLocation.longCoord,
         website: newLocation.website,
         userId: newLocation.userId,
         specializationIds: newLocation.specializations,

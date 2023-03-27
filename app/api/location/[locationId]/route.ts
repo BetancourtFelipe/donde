@@ -8,6 +8,8 @@ const locationSchema = z.object({
   info: z.string(),
   postalCode: z.string(),
   street: z.string(),
+  latCoord: z.number(),
+  longCoord: z.number(),
   website: z.string(),
   userId: z.number(),
   specializationIds: z.array(z.number()),
@@ -24,6 +26,8 @@ export type LocationResponseBodyGet =
         info: string;
         postalCode: string;
         street: string;
+        latCoord: number;
+        longCoord: number;
         website: string;
         userId: number;
         specializationIds: number[];

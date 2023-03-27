@@ -1,6 +1,7 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 // import { text } from 'stream/consumers';
 import { Specialization } from '../../../database/specializations';
@@ -8,11 +9,17 @@ import { getSafeReturnToPath } from '../../../utils/validation';
 import { LocationResponseBodyPost } from '../../api/location/route';
 import styles from './AddLocation.module.scss';
 
+const AddressAutofill = dynamic(
+  () => import('@mapbox/search-js-react').then((mod) => mod.AddressAutofill),
+  { ssr: false },
+);
+
 export default function AddLocation(props: { returnTo: string | string[] }) {
   const [name, setName] = useState('');
   const [info, setInfo] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [street, setStreet] = useState('');
+  const [apiData, setApiData] = useState([]);
   const [selectedSpecializations, setSelectedSpecializations] =
     useState<Specialization[]>();
   const [website, setWebsite] = useState('');
@@ -23,6 +30,20 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
   const handleSpecializationSelect = (selectedOption: Specialization[]) => {
     setSelectedSpecializations(selectedOption);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${street}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX}`,
+      )
+        .then((res) => res.json())
+        .then((res) => res.features[1].geometry.coordinates)
+        .then((res) => setApiData(res))
+        .catch(() => console.log('Error'));
+    }, 700);
+    return () => clearTimeout(timer);
+  }, [street, process.env.NEXT_PUBLIC_MAPBOX]);
+
   return (
     <form
       onSubmit={async (event) => {
@@ -44,6 +65,8 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
             street,
             website,
             userId,
+            latCoord: apiData[1],
+            longCoord: apiData[0],
             specializationIds: specializationsDatabaseStructure?.map(
               (specialization) => specialization.id,
             ),
@@ -90,7 +113,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         />
       </label>
       <br />
-      <label>
+      {/* <label>
         street:
         <br />
         <input
@@ -98,6 +121,18 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
           className={styles.input}
           onChange={(event) => setStreet(event.currentTarget.value)}
         />
+      </label> */}
+      <label>
+        street:
+        <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX}>
+          <input
+            required
+            className="input input-bordered input-sm w-full max-w-xs mt-4 bg-white"
+            value={street}
+            onChange={(event) => setStreet(event.currentTarget.value)}
+            autoComplete="address-line1"
+          />
+        </AddressAutofill>
       </label>
       <br />
       <label>

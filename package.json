@@ -11,6 +11,7 @@
     "migrate": "dotenv ley"
   },
   "dependencies": {
+    "@mapbox/search-js-react": "^1.0.0-beta.14",
     "@next/font": "^13.2.3",
     "@types/cookie": "^0.5.1",
     "@types/js-cookie": "^3.0.3",

@@ -8,6 +8,8 @@ export type Location = {
   info: string;
   postalCode: string;
   street: string;
+  latCoord: number;
+  longCoord: number;
   website: string;
   userId: number;
 };
@@ -18,6 +20,8 @@ export type LocationWithSpecializations = {
   info: string;
   postalCode: string;
   street: string;
+  latCoord: number;
+  longCoord: number;
   website: string;
   userId: number;
   specializations: Specialization[];
@@ -29,6 +33,8 @@ export type LocationWithSpecializationsAndUserId = {
   info: string;
   postalCode: string;
   street: string;
+  latCoord: number;
+  longCoord: number;
   website: string;
   specializationId: number;
   specializationName: string;
@@ -39,6 +45,8 @@ export async function createLocation(
   info: string,
   postalCode: string,
   street: string,
+  latCoord: number,
+  longCoord: number,
   website: string,
   userId: number,
   specializationIds: number[],
@@ -50,11 +58,13 @@ export async function createLocation(
       info,
       postal_code,
       street,
+      latCoord,
+      longCoord,
       website,
       user_id
       )
     VALUES
-      (${name}, ${info}, ${postalCode}, ${street}, ${website}, ${userId})
+      (${name}, ${info}, ${postalCode}, ${street}, ${latCoord}, ${longCoord}, ${website}, ${userId})
     RETURNING *
   `;
 
@@ -109,6 +119,8 @@ export async function getLocationWithSpecializationsById(locationId: number) {
       locations.info,
       locations.postal_code,
       locations.street,
+      locations.latCoord,
+      locations.longCoord,
       locations.website,
       specializations.id AS specialization_id,
       specializations.name AS specialization_name
@@ -142,6 +154,8 @@ export async function getAllLocationsWithLimit(limit: number) {
      locations.info,
      locations.postal_code,
      locations.street,
+     locations.latCoord,
+      locations.longCoord,
      locations.website,
      specializations.id as specialization_id,
      specializations.name as specialization_name
@@ -178,6 +192,8 @@ export const getLocationByUserId = cache(async (userId: string) => {
 //      locations.name AS location_name,
 //      locations.postal_code,
 //      locations.street,
+// locations.latCoord,
+// locations.longCoord,
 //      locations.website,
 //      locations.is_public,
 //      specializations.id as specialization_id,
@@ -205,6 +221,8 @@ export async function getLocationByToken(token: string) {
      locations.info,
      locations.postal_code,
      locations.street,
+     locations.latCoord,
+      locations.longCoord,
      locations.website,
      specializations.id as specialization_id,
      specializations.name as specialization_name
@@ -229,6 +247,8 @@ export async function updateLocation(
   info: string,
   postalCode: string,
   street: string,
+  latCoord: number,
+  longCoord: number,
   website: string,
   userId: number,
   specializationIds: number[],
@@ -241,6 +261,8 @@ export async function updateLocation(
       info = ${info},
       postal_code = ${postalCode},
       street = ${street},
+      latCoord = ${latCoord},
+      longCoord = ${longCoord},
       website = ${website},
       user_id = ${userId}
     WHERE
