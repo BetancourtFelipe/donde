@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import { StrictMode } from 'react';
+// import { StrictMode } from 'react';
 import { getLocationWithSpecializationsById } from '../../../database/locations';
 import { getLocationWithSpecializations } from '../../../utils/dataStructure';
 import Map from '../../components/Map/Map';
-import StarRating from '../../components/Starraiting';
+// import StarRating from '../../components/Starraiting';
 import styles from './page.module.scss';
 
 type Props = {
@@ -13,8 +13,8 @@ type Props = {
     info: string;
     postalCode: string;
     street: string;
-    latCoord: number;
-    longCoord: number;
+    lat: number;
+    long: number;
     website: string;
     specializationName: string;
   };
@@ -59,15 +59,14 @@ export default async function SingleLocationPage(props: Props) {
           <div className={styles.info}>
             <h3>info: </h3> <p>{location.info}</p>
           </div>
-
-          <div className={styles.rating}>
+          {/* <div className={styles.rating}>
             Rating:
             <StrictMode>
               <StarRating />
             </StrictMode>
-          </div>
+          </div> */}
           <div className={styles.map}>
-            <Map />
+            <Map location={location} />
           </div>
         </div>
       </main>

@@ -14,6 +14,9 @@ import styles from './page.module.scss';
 type Props = {
   params: {
     username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
   };
 };
 

@@ -6,8 +6,8 @@ export async function up(sql) {
     info varchar(1000) NOT NULL,
     postal_code varchar(4) NOT NULL,
     street varchar(300) NOT NULL,
-    latCoord decimal NOT NULL,
-    longCoord decimal NOT NULL,
+    lat decimal NOT NULL,
+    long decimal NOT NULL,
     website varchar(300) NOT NULL,
     user_id integer REFERENCES users (id) ON DELETE CASCADE NOT NULL
   )
