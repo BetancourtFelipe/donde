@@ -37,12 +37,15 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${street}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX}`,
       )
         .then((res) => res.json())
-        .then((res) => res.features[1].geometry.coordinates)
+
+        .then((res) => res.features[0].geometry.coordinates)
         .then((res) => setApiData(res))
         .catch(() => console.log('Error'));
     }, 700);
     return () => clearTimeout(timer);
-  }, [street, process.env.NEXT_PUBLIC_MAPBOX]);
+  }, [street]);
+
+  console.log('apiData', apiData[1], apiData[0]);
 
   return (
     <form
