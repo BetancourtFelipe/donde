@@ -7,19 +7,20 @@
 }
 
 .locationCardDetails {
-  width: 600px;
+  width: 610px;
   height: 200px;
   text-align: center;
   color: black;
-  box-shadow: 5px 10px black;
   text-transform: uppercase;
-  margin: 10px;
   padding: 10px;
-  border: 5px solid;
-  border-image: linear-gradient(45deg, purple, orange) 1;
-  // border-width: 10px;
-  // border-style: solid;
-  // border-radius: 5px;
+  text-decoration: none;
+  border: double 6px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(45deg, purple, orange);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 5px 10px black;
 }
 
 .locations {

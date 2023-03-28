@@ -102,6 +102,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         <input
           value={name}
           className={styles.input}
+          placeholder="location name"
           onChange={(event) => setName(event.currentTarget.value)}
         />
       </label>
@@ -112,6 +113,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         <input
           value={postalCode}
           className={styles.input}
+          placeholder="postal code"
           onChange={(event) => setPostalCode(event.currentTarget.value)}
         />
       </label>
@@ -134,6 +136,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
             value={street}
             onChange={(event) => setStreet(event.currentTarget.value)}
             autoComplete="address-line1"
+            placeholder="street and number"
           />
         </AddressAutofill>
       </label>
@@ -144,6 +147,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         <input
           value={website}
           className={styles.input}
+          placeholder="website"
           onChange={(event) => setWebsite(event.currentTarget.value)}
         />
       </label>

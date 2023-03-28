@@ -27,7 +27,13 @@ export default function Map(props) {
           lng: props.location.long,
         }}
       >
-        <Popup>{props.location.name}</Popup>
+        <Popup>
+          {props.location.locationName}
+          <br />
+          {props.location.street}
+          <br />
+          {props.location.postalCode} Wien
+        </Popup>
       </Marker>
     </MapContainer>
   );
