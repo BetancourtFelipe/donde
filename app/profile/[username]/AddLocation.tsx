@@ -45,8 +45,6 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
     return () => clearTimeout(timer);
   }, [street]);
 
-  console.log('apiData', apiData[1], apiData[0]);
-
   return (
     <form
       onSubmit={async (event) => {

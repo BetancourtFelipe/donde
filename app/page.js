@@ -13,9 +13,13 @@ export default function HomePage() {
           <p>jsdhhfjifhsfkhkfs</p>
         </section>
         <div>
-          <Image className={styles.image} src={barlanding} />
+          <Image
+            className={styles.image}
+            src={barlanding}
+            alt="barkeeper working"
+          />
         </div>
-        <Image className={styles.image} src={coffelanding} />
+        <Image className={styles.image} src={coffelanding} alt="coffee bar" />
         <section className={styles.description}>
           <h3>Experience</h3>
         </section>

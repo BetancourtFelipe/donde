@@ -34,11 +34,11 @@ export default async function UserProfile({ params }: Props) {
     notFound();
   }
 
-  // const userId = await getUserBySessionToken(token);
+  // const userId = await getUserBySessionToken();
 
-  // if (!userId) {
-  //   notFound();
-  // }
+  if (!user) {
+    notFound();
+  }
 
   // const locations = await getLocationByUserId(user.id);
   const specializationsFromDatabase = await getAllSpecializations();
