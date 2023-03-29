@@ -32,9 +32,7 @@ export default async function RootLayout({ children }) {
             <div>
               {user ? (
                 <>
-                  <Link href={`/profile/${user.username}`}>
-                    {user.username}
-                  </Link>
+                  <Link href="/profile">{user.username}</Link>
                   <Link
                     className={styles.login}
                     href="/logout"

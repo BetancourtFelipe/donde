@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 // import { text } from 'stream/consumers';
-import { Specialization } from '../../../database/specializations';
-import { getSafeReturnToPath } from '../../../utils/validation';
-import { LocationResponseBodyPost } from '../../api/location/route';
+import { Specialization } from '../../database/specializations';
+import { getSafeReturnToPath } from '../../utils/validation';
+import { LocationResponseBodyPost } from '../api/location/route';
 import styles from './AddLocation.module.scss';
 
 const AddressAutofill = dynamic(
@@ -100,7 +100,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         <input
           value={name}
           className={styles.input}
-          placeholder="location name"
+          placeholder="Location Name"
           onChange={(event) => setName(event.currentTarget.value)}
         />
       </label>
@@ -111,7 +111,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         <input
           value={postalCode}
           className={styles.input}
-          placeholder="postal code"
+          placeholder="1xx0 "
           onChange={(event) => setPostalCode(event.currentTarget.value)}
         />
       </label>
@@ -134,7 +134,7 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
             value={street}
             onChange={(event) => setStreet(event.currentTarget.value)}
             autoComplete="address-line1"
-            placeholder="street and number"
+            placeholder="Street and Number"
           />
         </AddressAutofill>
       </label>
