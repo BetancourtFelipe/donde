@@ -116,15 +116,6 @@ export default function AddLocation(props: { returnTo: string | string[] }) {
         />
       </label>
       <br />
-      {/* <label>
-        street:
-        <br />
-        <input
-          value={street}
-          className={styles.input}
-          onChange={(event) => setStreet(event.currentTarget.value)}
-        />
-      </label> */}
       <label>
         street: <br />
         <AddressAutofill accessToken={process.env.NEXT_PUBLIC_MAPBOX}>

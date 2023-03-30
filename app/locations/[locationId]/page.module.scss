@@ -1,6 +1,13 @@
+@media (max-width: 500px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 .mainProfile {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .profile {
@@ -54,6 +61,7 @@
   background-origin: border-box;
   background-clip: padding-box, border-box;
   box-shadow: 5px 10px black;
+  margin-top: 175px;
 }
 
 .info {
@@ -63,11 +71,11 @@
     linear-gradient(45deg, purple, orange);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  height: 300px;
-  width: 700px;
+  height: 400px;
+  width: 500px;
   text-align: center;
   box-shadow: 5px 10px black;
   text-transform: uppercase;
-  // margin: 30px;
+  margin-top: 120px;
   padding: 30px;
 }

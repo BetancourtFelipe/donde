@@ -1,3 +1,9 @@
+@media (max-width: 500px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 .register {
   display: flex;
   justify-content: space-evenly;
@@ -5,19 +11,25 @@
   margin: 10px;
   padding: 90px;
   flex-wrap: wrap;
+  overflow: scroll;
+  height: 650px;
 }
 
 .form {
-  border-radius: 5px;
-  background-image: linear-gradient(#faf7ff, #aba9bb 90%);
-  width: 310px;
-  height: 440px;
+  width: 410px;
+  height: 500px;
   text-align: center;
   color: black;
-  box-shadow: 10px 10px #f1edff;
   text-transform: uppercase;
-  margin: 10px;
   padding: 10px;
+  text-decoration: none;
+  border: double 6px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(45deg, purple, orange);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 5px 10px black;
 }
 
 .input {
