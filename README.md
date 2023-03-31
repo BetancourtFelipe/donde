@@ -1,38 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Introducing DONDE, the full-stack web application designed to help you find the perfect location in Vienna. With DONDE, you can explore different localities in Vienna based on their specializations and amenities, making it easier than ever to discover the right place for any occasion.
 
-## Getting Started
+As a full-stack developer with experience in modern web technologies, I have implemented cutting-edge features into DONDE. The app's front-end component features a sleek and user-friendly map interface, built using Sass CSS, Next.js 13, and TypeScript. This allows users to easily search for localities in specific areas of Vienna and view detailed information about each location.
 
-First, run the development server:
+To ensure the security of user data, DONDE uses CSRF tokens, a robust security measure that protects against cross-site scripting (XSS) attacks. The app's back-end component is built using PostgresSQL, a reliable open-source relational database that ensures secure data storage and management.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Using REST API, I have created a scalable back-end that is responsible for user data management, including user authentication, storing locality information, and managing user preferences. Localities can create a profile on DONDE, where they can showcase their unique features and specializations to potential customers.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app also features an advanced leaflet map that displays the exact location of each locality, using Mapbox API to provide precise coordinates. This ensures that users can easily find the perfect location for their needs.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Overall, DONDE is a powerful tool that provides an easy and efficient way to find and showcase the perfect location. Whether you're a business owner looking to attract new customers or a user searching for the perfect place, DONDE has everything you need to make the process simple and enjoyable. So why wait? Start exploring the best of Vienna with DONDE today!
