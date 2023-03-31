@@ -1,27 +1,39 @@
-
 .landing {
-
   display: flex;
   justify-content: center;
   padding: 20px 20px;
   gap: 40px;
   flex-wrap: wrap;
   margin: 20px;
+}
 
-  .description {
-    border-radius: 5px;
-    background-image: linear-gradient(#faf7ff, #aba9bb 90%);
-    width: 610px;
-    height: 410px;
-    text-align: center;
-    color: black;
-  }
-  .image {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    max-width: 100%;
-    height: auto;
-    opacity: 0.8;
-  }
+.description {
+  width: 320px;
+  height: 400px;
+  text-align: center;
+  color: black;
+  text-transform: uppercase;
+  padding: 10px;
+  text-decoration: none;
+  border: double 6px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(45deg, purple, orange);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 5px 10px black;
+  flex-wrap: wrap;
+}
+
+.image {
+  border: double 6px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(45deg, purple, orange);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 5px 10px black;
+  max-width: 100%;
+  height: 400px;
+  opacity: 0.8;
 }

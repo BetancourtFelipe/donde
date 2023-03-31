@@ -5,6 +5,7 @@ import { getValidSessionByToken } from '../../database/sessions';
 import { getAllSpecializations } from '../../database/specializations';
 import { getUserBySessionToken, getUserByUsername } from '../../database/users';
 import { transformDataForSelect } from '../../utils/dataStructure';
+import { getSafeReturnToPath } from '../../utils/validation';
 import AddLocation from './AddLocation';
 import styles from './page.module.scss';
 
@@ -16,7 +17,7 @@ export default async function UserProfile() {
     (await getValidSessionByToken(sessionTokenCookie.value));
 
   // for example you may also check if session user is an admin role
-  console.log(session);
+  console.log();
   if (!session) {
     notFound();
   }

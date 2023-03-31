@@ -1,17 +1,15 @@
 .header {
   .image {
-    width: 150px;
-    height: 150px;
-    // margin: 20px;
+    width: 100%;
+    height: auto;
     padding: 10px;
   }
   .nav {
     display: flex;
-    height: 150px;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 50px;
-    margin: 20px;
+    padding: 20px;
     font-size: 1em;
     font-weight: 600;
     border-bottom: solid 4px;
@@ -43,14 +41,39 @@
     }
   }
 }
+
+/* Tablet and desktop */
+
+@media (min-width: 768px) {
+  .header {
+    .nav {
+      flex-direction: row;
+      height: 150px;
+      align-items: center;
+      padding: 50px;
+      margin: 20px 0;
+    }
+  }
+}
+
+/* Desktop only */
+
+@media (min-width: 992px) {
+  .header {
+    .image {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
 .footer {
   background: linear-gradient(45deg, purple, orange);
   display: flex;
-  height: 50px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
   padding: 10px;
   margin: 20px;
-  align-items: center;
-  justify-content: space-around;
   border-radius: 5px;
 
   a:hover {
@@ -68,5 +91,31 @@
     padding: 10px;
     margin: 20px;
     border-radius: 10px;
+  }
+}
+
+/* Tablet and desktop */
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Desktop only */
+
+@media (min-width: 992px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: center;
+  }
+  .footer div {
+    display: flex;
+    align-items: center;
+  }
+  .footer a {
+    margin: 0 10px;
   }
 }
