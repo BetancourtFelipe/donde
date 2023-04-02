@@ -3,8 +3,8 @@ export async function up(sql) {
   CREATE TABLE users (
     id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     username varchar(80) NOT NULL UNIQUE,
-    firstName varchar(80) NOT NULL,
-    lastName varchar(80) NOT NULL,
+    first_name varchar(80) NOT NULL,
+    last_name varchar(80) NOT NULL,
     email varchar(80) NOT NULL UNIQUE,
     password_hash varchar(70) NOT NULL
   )

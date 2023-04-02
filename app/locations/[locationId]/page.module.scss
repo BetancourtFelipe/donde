@@ -81,84 +81,8 @@
   color: black;
 }
 
-// @media (max-width: 500px) {
-//   .flex-container {
-//     flex-direction: column;
-//   }
-// }
-
-// .mainProfile {
-//   display: flex;
-//   justify-content: space-evenly;
-//   flex-wrap: wrap;
-// }
-
-// .profile {
-//   width: 310px;
-//   height: 650px;
-//   text-align: center;
-//   color: black;
-//   text-transform: uppercase;
-//   padding: 10px;
-//   text-decoration: none;
-//   border: double 6px transparent;
-//   border-radius: 5px;
-//   background-image: linear-gradient(white, white),
-//     linear-gradient(45deg, purple, orange);
-//   background-origin: border-box;
-//   background-clip: padding-box, border-box;
-//   box-shadow: 5px 10px black;
-// }
-
-// .specializations {
-//   display: flex;
-//   border: solid black 1px;
-//   border-radius: 5px;
-//   background-color: #f1edff;
-//   list-style: none;
-// }
-
-// .rating {
-//   border-radius: 20px;
-//   background-image: linear-gradient(#faf7ff, #aba9bb 90%);
-//   width: 310px;
-//   height: 200px;
-//   text-align: center;
-//   color: black;
-//   box-shadow: 5px 10px black;
-//   text-transform: uppercase;
-//   margin: 10px;
-//   padding: 10px;
-//   text-decoration: none;
-//   border-image: linear-gradient(45deg, purple, orange) 1;
-// }
-
-// .map {
-//   width: 500px;
-//   height: 500px;
-//   border: double 6px transparent;
-//   border-radius: 5px;
-//   background-image: linear-gradient(white, white),
-//     linear-gradient(45deg, purple, orange);
-//   background-origin: border-box;
-//   background-clip: padding-box, border-box;
-//   box-shadow: 5px 10px black;
-//   margin-top: 175px;
-// }
-
-// .info {
-//   border: double 6px transparent;
-//   border-radius: 5px;
-//   background-image: linear-gradient(white, white),
-//     linear-gradient(45deg, purple, orange);
-//   background-origin: border-box;
-//   background-clip: padding-box, border-box;
-//   height: 400px;
-//   width: 500px;
-//   text-align: center;
-//   box-shadow: 5px 10px black;
-//   text-transform: uppercase;
-//   margin-top: 120px;
-//   padding: 30px;
-//   color: black;
-// }
+.details {
+  border: solid black 1px;
+  border-radius: 5px;
+  background-color: #f1edff;
+}

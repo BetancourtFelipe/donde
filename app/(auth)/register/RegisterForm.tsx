@@ -87,6 +87,7 @@ export default function RegisterForm(props: { returnTo: string | string[] }) {
         <br />
         <input
           value={email}
+          type="email"
           className={styles.input}
           onChange={(event) => setEmail(event.currentTarget.value)}
         />

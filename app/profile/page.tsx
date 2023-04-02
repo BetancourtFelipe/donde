@@ -23,6 +23,7 @@ export default async function UserProfile() {
   }
 
   const user = await getUserBySessionToken(session.token);
+
   // const userId = await getUserBySessionToken();
 
   if (!user) {
@@ -36,7 +37,24 @@ export default async function UserProfile() {
   return (
     <main className={styles.main}>
       <div className={styles.profile}>
-        <h1>{user.username}</h1>
+        <h2>
+          user name: <br />
+        </h2>
+        <h3 className={styles.details}>{user.username}</h3>
+        <h2>
+          firstName: <br />
+        </h2>
+        <h3 className={styles.details}>{user.firstName}</h3>
+
+        <h2>
+          last name: <br />
+        </h2>
+        <h3 className={styles.details}>{user.lastName}</h3>
+
+        <h2>
+          email: <br />
+        </h2>
+        <h3 className={styles.details}>{user.email}</h3>
       </div>
       <div className={styles.createLocation}>
         <h2>Add your location</h2>

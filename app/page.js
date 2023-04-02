@@ -9,8 +9,10 @@ export default function HomePage() {
     <main>
       <div className={styles.landing}>
         <section className={styles.description}>
-          <h3>Description Donde</h3>
-          <p>jsdhhfjifhsfkhkfs</p>
+          <h3 className={styles.text1}>
+            ARE YOU LOOKING FOR NEW PLACES IN VIENNA? DISCOVER VIENNESE
+            GASTRONOMY. FROM NEW LOCALES TO THE MOST RATED LOCALITIES.
+          </h3>
         </section>
         <div>
           <Image
@@ -21,7 +23,11 @@ export default function HomePage() {
         </div>
         <Image className={styles.image} src={coffelanding} alt="coffee bar" />
         <section className={styles.description}>
-          <h3>Experience</h3>
+          <h3 className={styles.text2}>
+            YOU HAVE A LOCATION IN VIENNA AND WANT TO PROMOTE IT? WHETHER THEY
+            ALREADY EXIST OR HAVE JUST OPENED, WE PROVIDE A PLATFORM WHERE YOU
+            CAN ALWAYS STAY UP TO DATE ON HOW YOUR SERVICE IS DOING.
+          </h3>
         </section>
       </div>
     </main>

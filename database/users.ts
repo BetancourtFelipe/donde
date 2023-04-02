@@ -15,11 +15,20 @@ type UserWithPasswordHash = User & {
 
 export const getUserBySessionToken = cache(async (token: string) => {
   const [user] = await sql<
-    { id: number; username: string; csrfSecret: string }[]
+    {
+      id: number;
+      username: string;
+      firstName: string;
+      lastName: string;
+      csrfSecret: string;
+    }[]
   >`
     SELECT
       users.id,
       users.username,
+      users.first_name,
+      users.last_name,
+      users.email,
       sessions.csrf_secret
     FROM
       users
@@ -78,14 +87,14 @@ export const createUser = cache(
       }[]
     >`
       INSERT INTO users
-        (username,  firstName, lastName, email, password_hash)
+        (username,  first_name, last_name, email, password_hash)
       VALUES
         (${username}, ${firstName}, ${lastName}, ${email}, ${passwordHash})
       RETURNING
         id,
         username,
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         email
     `;
     return user;

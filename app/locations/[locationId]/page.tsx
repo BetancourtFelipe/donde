@@ -37,11 +37,13 @@ export default async function SingleLocationPage(props: Props) {
       <main>
         <div className={styles.mainProfile}>
           <div className={styles.profile}>
-            <h3>name:</h3> <p>{location.locationName}</p>
-            <h3>street:</h3> <p>{location.street}</p>
-            <h3>postal code:</h3> <p>{location.postalCode} Vienna</p>
+            <h3>name:</h3>{' '}
+            <p className={styles.details}>{location.locationName}</p>
+            <h3>street:</h3> <p className={styles.details}>{location.street}</p>
+            <h3>postal code:</h3>{' '}
+            <p className={styles.details}>{location.postalCode} Vienna</p>
             <h3>website:</h3>
-            <p>{location.website}</p>
+            <p className={styles.details}> {location.website}</p>
             <h3>specializations: </h3>
             <div>
               {location.specializations.map((specialization) => {
@@ -57,7 +59,7 @@ export default async function SingleLocationPage(props: Props) {
             </div>
           </div>
           <div className={styles.info}>
-            <h3>info: </h3> <p>{location.info}</p>
+            <h3>info: </h3> <p className={styles.details}>{location.info}</p>
           </div>
           {/* <div className={styles.rating}>
             Rating:
