@@ -5,6 +5,7 @@
   text-decoration: overline;
   text-transform: uppercase;
 }
+
 .main {
   display: flex;
   justify-content: center;
@@ -12,11 +13,11 @@
   margin: 10px;
   padding: 40px;
   flex-wrap: wrap;
+}
 
-  .heading {
-    text-decoration: underline;
-    flex-wrap: wrap;
-  }
+.heading {
+  text-decoration: underline;
+  flex-wrap: wrap;
 }
 
 .about {
@@ -26,8 +27,9 @@
     linear-gradient(45deg, purple, orange);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  width: 610px;
-  height: 440px;
+  width: 100%;
+  max-width: 610px;
+  height: auto;
   text-align: center;
   color: black;
   box-shadow: 10px 10px #f1edff;

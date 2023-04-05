@@ -1,9 +1,57 @@
-@media (max-width: 500px) {
-  .flex-container {
-    flex-direction: column;
-  }
-}
+// @media (max-width: 500px) {
+//   .flex-container {
+//     flex-direction: column;
+//   }
+// }
 
+// .register {
+//   display: flex;
+//   justify-content: space-evenly;
+//   gap: 50px;
+//   margin: 10px;
+//   padding: 90px;
+//   flex-wrap: wrap;
+//   overflow: scroll;
+//   height: 650px;
+// }
+
+// .form {
+//   width: 410px;
+//   height: 500px;
+//   text-align: center;
+//   color: black;
+//   text-transform: uppercase;
+//   padding: 10px;
+//   text-decoration: none;
+//   border: double 6px transparent;
+//   border-radius: 5px;
+//   background-image: linear-gradient(white, white),
+//     linear-gradient(45deg, purple, orange);
+//   background-origin: border-box;
+//   background-clip: padding-box, border-box;
+//   box-shadow: 5px 10px black;
+// }
+
+// .input {
+//   border-radius: 5px;
+// }
+
+// .registerButton {
+//   border: solid black 1px;
+//   border-radius: 5px;
+//   padding: 5px 10px;
+//   background-color: #030303;
+//   color: white;
+//   transition-duration: 0.5s;
+// }
+
+// .registerButton:hover {
+//   color: black;
+//   background-color: white;
+//   border-radius: 5px;
+// }
+
+/* Styles for desktop */
 .register {
   display: flex;
   justify-content: space-evenly;
@@ -49,4 +97,35 @@
   color: black;
   background-color: white;
   border-radius: 5px;
+}
+
+/* Styles for tablets */
+@media screen and (max-width: 768px) {
+  .register {
+    padding: 60px;
+  }
+
+  .form {
+    width: 350px;
+    height: 450px;
+  }
+}
+
+/* Styles for smartphones */
+@media screen and (max-width: 500px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .register {
+    padding: 30px;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .form {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
 }

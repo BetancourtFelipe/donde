@@ -1,7 +1,62 @@
-@media (max-width: 500px) {
-  .flex-container {
-    flex-direction: column;
-  }
+// @media (max-width: 500px) {
+//   .flex-container {
+//     flex-direction: column;
+//   }
+// }
+
+// .login {
+//   display: flex;
+//   justify-content: center;
+//   gap: 40px;
+//   margin: 150px;
+//   padding: 20px;
+//   align-content: center;
+//   flex-wrap: wrap;
+//   overflow: scroll;
+//   height: 390px;
+//   border-radius: 5px;
+// }
+
+// .form {
+//   width: 300px;
+//   height: 300px;
+//   text-align: center;
+//   color: black;
+//   text-transform: uppercase;
+//   padding: 10px;
+//   text-decoration: none;
+//   border: double 6px transparent;
+//   border-radius: 5px;
+//   background-image: linear-gradient(white, white),
+//     linear-gradient(45deg, purple, orange);
+//   background-origin: border-box;
+//   background-clip: padding-box, border-box;
+//   box-shadow: 5px 10px black;
+//   flex-wrap: wrap;
+// }
+
+// .registerButton {
+//   border: solid black 1px;
+//   border-radius: 5px;
+//   padding: 10px 20px;
+//   background-color: white;
+//   color: black;
+//   text-transform: uppercase;
+//   transition-duration: 0.5s;
+//   text-decoration: none;
+// }
+
+// .registerButton:hover {
+//   color: white;
+//   background-color: black;
+//   border-radius: 5px;
+// }
+
+/* Default styles */
+
+.flex-container {
+  display: flex;
+  justify-content: center;
 }
 
 .login {
@@ -50,4 +105,40 @@
   color: white;
   background-color: black;
   border-radius: 5px;
+}
+
+/* Media queries for tablets and desktops */
+
+@media only screen and (min-width: 501px) {
+  .login {
+    margin: 150px 50px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .form {
+    width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+/* Media queries for smartphones */
+
+@media only screen and (max-width: 500px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .login {
+    margin: 50px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .form {
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+  }
 }
