@@ -44,4 +44,14 @@
   border: solid black 1px;
   border-radius: 5px;
   background-color: #f1edff;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .details {
+    width: 100%;
+    height: auto;
+  }
 }
