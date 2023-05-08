@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getLocationWithSpecializationsById } from '../../../database/locations';
 import { getLocationWithSpecializations } from '../../../utils/dataStructure';
 import { CommentSection } from '../../components/CommentSection';
+import FavoriteButton from '../../components/FavoriteButton';
 import Map from '../../components/Map/Map';
 // import StarRating from '../../components/Starraiting';
 import styles from './page.module.scss';
@@ -73,6 +74,9 @@ export default async function SingleLocationPage(props: Props) {
           </div> */}
           <div className={styles.map}>
             <Map location={location} />
+          </div>
+          <div>
+            <FavoriteButton />
           </div>
         </div>
       </main>
