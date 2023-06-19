@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
-// import { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { getLocationWithSpecializationsById } from '../../../database/locations';
 import { getLocationWithSpecializations } from '../../../utils/dataStructure';
-import { CommentSection } from '../../components/CommentSection';
+// import { CommentSection } from '../../components/CommentSection';
 import FavoriteButton from '../../components/FavoriteButton';
 import Map from '../../components/Map/Map';
-// import StarRating from '../../components/Starraiting';
+import StarRating from '../../components/Starraiting';
 import styles from './page.module.scss';
 
 type Props = {
@@ -63,9 +63,7 @@ export default async function SingleLocationPage(props: Props) {
           <div className={styles.info}>
             <h3>info: </h3> <p className={styles.details}>{location.info}</p>
           </div>
-          <div>
-            <CommentSection />
-          </div>
+          {/* <div><CommentSection /></div> */}
           {/* <div className={styles.rating}>
             Rating:
             <StrictMode>
